@@ -1,18 +1,14 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { PARTNERS, PARTNERS_BENEFITS } from '../data/constants';
+import { PARTNERS } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
 
 const Partners = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
 
-  // Combine static data from constants with translations for dynamic content
-  const benefitsWithTranslations = PARTNERS_BENEFITS.map((benefit) => ({
-    icon: benefit.icon,
-    title: benefit.title,
-    description: t(benefit.description)
-  }));
+  // Get translated benefits list using returnObjects option
+  const benefitsList = t('partners.benefits.list', { returnObjects: true }) || [];
 
   return (
     <section id="partners" className="py-20 bg-white">
@@ -145,7 +141,7 @@ const Partners = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefitsWithTranslations.map((benefit, index) => (
+            {Array.isArray(benefitsList) && benefitsList.map((benefit, index) => (
               <div
                 key={index}
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"

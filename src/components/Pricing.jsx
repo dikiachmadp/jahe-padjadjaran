@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { PRODUCT_INFO, PRICING_FEATURES } from '../data/constants';
+import { PRODUCT_INFO } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
 
 const Pricing = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
 
-  // Use static arrays from constants - prevents t().map() crash
-  const partnerFeatures = PRICING_FEATURES.partnerPrice.features;
-  const retailFeatures = PRICING_FEATURES.retailPrice.features;
+  // Get translated arrays using returnObjects option
+  const partnerFeatures = t('pricing.partnerPrice.features', { returnObjects: true }) || [];
+  const retailFeatures = t('pricing.retailPrice.features', { returnObjects: true }) || [];
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-warmth-50 to-white">

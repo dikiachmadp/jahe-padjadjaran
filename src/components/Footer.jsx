@@ -4,6 +4,9 @@ import { useLanguage } from '../context/LanguageContext';
 const Footer = () => {
   const { t } = useLanguage();
 
+  // Get translated navigation array
+  const translatedNav = t('nav', { returnObjects: true }) || {};
+
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -87,7 +90,7 @@ const Footer = () => {
                     onClick={() => scrollToSection(item.href)}
                     className="text-warmth-200 hover:text-warmth-300 font-body transition-colors"
                   >
-                    {t(`nav.${item.key}`)}
+                    {translatedNav[item.key] || t(`nav.${item.key}`)}
                   </button>
                 </li>
               ))}

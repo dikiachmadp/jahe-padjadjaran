@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { translations } from '../data/translations';
+import { createContext, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const LanguageContext = createContext();
 
@@ -12,57 +12,21 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState(() => {
-        // Check localStorage or default to Indonesian
-        const saved = localStorage.getItem('language');
-        if (saved && (saved === 'id' || saved === 'en')) {
-            return saved;
-        }
-        return 'id'; // Default to Indonesian
-    });
+    const { i18n, t } = useTranslation();
 
-    useEffect(() => {
-        // Save language preference to localStorage
-        localStorage.setItem('language', language);
-        // Also set html lang attribute for accessibility
-        document.documentElement.lang = language;
-    }, [language]);
+    const language = i18n.language || 'id';
+    const isIndonesian = language === 'id';
+    const isEnglish = language === 'en';
 
     const toggleLanguage = () => {
-        setLanguage(prev => prev === 'id' ? 'en' : 'id');
+        const newLang = isIndonesian ? 'en' : 'id';
+        i18n.changeLanguage(newLang);
     };
 
-    const t = (key, params = {}) => {
-        // Support nested key access like 'hero.title' or 'nav.home'
-        const keys = key.split('.');
-        let value = translations[language];
-
-        for (const k of keys) {
-            if (value && typeof value === 'object' && k in value) {
-                value = value[k];
-            } else {
-                // Fallback to Indonesian if key not found
-                let fallback = translations.id;
-                for (const fk of keys) {
-                    if (fallback && typeof fallback === 'object' && fk in fallback) {
-                        fallback = fallback[fk];
-                    } else {
-                        return key; // Return key if not found
-                    }
-                }
-                value = fallback;
-                break;
-            }
+    const setLanguage = (lang) => {
+        if (lang === 'id' || lang === 'en') {
+            i18n.changeLanguage(lang);
         }
-
-        if (typeof value !== 'string') {
-            return key; // Return key if value is not a string
-        }
-
-        // Replace placeholders with params
-        return value.replace(/\{(\w+)\}/g, (match, paramKey) => {
-            return params[paramKey] !== undefined ? params[paramKey] : match;
-        });
     };
 
     const value = {
@@ -70,9 +34,9 @@ export const LanguageProvider = ({ children }) => {
         setLanguage,
         toggleLanguage,
         t,
-        translations: translations[language],
-        isIndonesian: language === 'id',
-        isEnglish: language === 'en',
+        translations: i18n.getDataByLanguage(language)?.translation || {},
+        isIndonesian,
+        isEnglish,
     };
 
     return (

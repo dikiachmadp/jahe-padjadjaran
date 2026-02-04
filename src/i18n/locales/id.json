@@ -1,0 +1,242 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "products": "Produk",
+    "pricing": "Harga",
+    "partners": "Mitra",
+    "contact": "Kontak",
+    "contactUs": "Hubungi Kami"
+  },
+  "hero": {
+    "badge": "Produk Lokal Berkualitas",
+    "title": "Permen Jahe",
+    "subtitle": "Padjajaran",
+    "description": "Kehangatan rempah nusantara dalam setiap butir. Permen berbasis jahe alami yang menjaga daya tahan tubuh dan memberikan kenyamanan pada tenggorokan.",
+    "viewProducts": "Lihat Produk",
+    "becomePartner": "Jadi Mitra",
+    "stats": {
+      "natural": "Bahan Alami",
+      "since": "Sejak",
+      "partners": "Mitra Distribusi"
+    },
+    "productShowcase": "Jahe Berkualitas",
+    "processedWithCare": "Diproses dengan Care"
+  },
+  "about": {
+    "badge": "Tentang Kami",
+    "title": "PT Padjajaran Pratama Wijaya",
+    "subtitle": "Kami adalah perusahaan yang berkomitmen menghadirkan produk rempah berkualitas tinggi untuk mendukung kesehatan dan kenyamanan masyarakat Indonesia.",
+    "features": [
+      {
+        "icon": "🏢",
+        "title": "Perusahaan Terdaftar",
+        "description": "Berbadan hukum resmi dengan legalitas lengkap dari Kementerian Hukum dan HAM"
+      },
+      {
+        "icon": "🌿",
+        "title": "Bahan Berkualitas",
+        "description": "Menggunakan rempah pilihan terbaik yang diproses secara higienis"
+      },
+      {
+        "icon": "🎯",
+        "title": "Visi Lokal",
+        "description": "Mendukung produk nusantara untuk bersaing di pasar nasional"
+      },
+      {
+        "icon": "🤝",
+        "title": "Kemitraan Solid",
+        "description": "Bermitra dengan distributor terpercaya di Jabodetabek dan Jawa Barat"
+      }
+    ],
+    "legal": {
+      "title": "Legalitas Perusahaan",
+      "registrationNumber": "Nomor Registrasi",
+      "nib": "NIB",
+      "npwp": "NPWP",
+      "kbliCode": "Kode KBLI",
+      "businessActivity": "Aktivitas Usaha"
+    },
+    "business": {
+      "title": "Informasi Usaha",
+      "scale": "Skala Usaha",
+      "investment": "Status Penanaman Modal",
+      "risk": "Tingkat Risiko",
+      "registrationDate": "Tanggal Registrasi",
+      "issuedBy": "Diterbitkan oleh"
+    }
+  },
+  "product": {
+    "badge": "Produk Unggulan",
+    "title": "Permen Jahe Padjajaran",
+    "description": "Permen berbasis rempah yang dibuat dari bahan alami berkualitas tinggi",
+    "benefits": [
+      "Menghangatkan tubuh",
+      "Menjaga daya tahan tubuh",
+      "Memberikan rasa nyaman pada tenggorokan",
+      "Alternatif sehat untuk konsumsi harian"
+    ],
+    "benefitsTitle": "Manfaat untuk Kesehatan",
+    "featuresTitle": "Keunggulan Produk",
+    "features": [
+      "Berbahan alami berkualitas tinggi",
+      "Diproses secara higienis",
+      "Kemasan modern dan praktis",
+      "Cita rasa jahe khas nusantara"
+    ],
+    "packaging": {
+      "title": "Spesifikasi Kemasan",
+      "subtitle": "Dikemas dengan praktis untuk memudahkan distribusi dan penjualan",
+      "perJar": "Per Toples",
+      "perCarton": "Per Karton",
+      "perPiece": "Per Butir"
+    },
+    "showcase": {
+      "title": "Toples Praktis",
+      "subtitle": "butir per toples"
+    }
+  },
+  "pricing": {
+    "badge": "Penawaran Kemitraan",
+    "title": "Skema Harga Mitra",
+    "subtitle": "Kami menawarkan skema kemitraan yang menguntungkan dengan sistem pembayaran yang fleksibel sesuai ketentuan manajemen",
+    "partnerPrice": {
+      "title": "Harga Mitra",
+      "perCarton": "per karton",
+      "features": [
+        "Sistem pembayaran fleksibel",
+        "Dukungan promosi",
+        "Produk berkualitas terjamin"
+      ]
+    },
+    "retailPrice": {
+      "title": "Harga Jual Retail",
+      "perJar": "per toples ke konsumen",
+      "label": "REKOMENDASI",
+      "features": [
+        "Harga kompetitif",
+        "Margin keuntungan jelas",
+        "Mudah dijual kembali"
+      ]
+    },
+    "profit": {
+      "title": "Keuntungan Mitra",
+      "perJar": "per toples",
+      "perCarton": "per karton",
+      "margin": "Margin Keuntungan"
+    },
+    "breakdown": {
+      "title": "Rincian Harga Per Unit",
+      "basePrice": {
+        "label": "Harga Dasar per Toples"
+      },
+      "partnerPrice": {
+        "label": "Harga Beli Mitra per Karton"
+      },
+      "retailPrice": {
+        "label": "Harga Jual ke Konsumen"
+      },
+      "totalProfit": {
+        "label": "Total Keuntungan per Karton"
+      },
+      "paymentNote": "Skema pembayaran mengikuti ketentuan yang berlaku dari manajemen mitra"
+    },
+    "cta": "Ajukan Kemitraan Sekarang"
+  },
+  "partners": {
+    "badge": "Mitra Distribusi",
+    "title": "Dipercaya oleh Mitra Terpilih",
+    "subtitle": "Kami telah menjalin kerja sama distribusi dengan berbagai perusahaan dan toko terpercaya di wilayah Jabodetabek dan Jawa Barat",
+    "stats": {
+      "active": "Mitra Aktif",
+      "since": "Sejak",
+      "satisfaction": "Kepuasan Mitra",
+      "coverage": "Wilayah Coverage"
+    },
+    "active": "Aktif",
+    "since": "Sejak {{year}}",
+    "benefits": {
+      "title": "Mengapa Bermitra dengan Kami?",
+      "subtitle": "Kami berkomitmen membangun ekosistem bisnis yang saling menguntungkan dan berkelanjutan",
+      "list": [
+        {
+          "icon": "🎯",
+          "title": "Produk Berkualitas",
+          "description": "Produk dengan standar kualitas tinggi dan legalitas lengkap"
+        },
+        {
+          "icon": "💼",
+          "title": "Dukungan Penuh",
+          "description": "Tim kami siap mendukung keberhasilan mitra dalam penjualan"
+        },
+        {
+          "icon": "📈",
+          "title": "Margin Kompetitif",
+          "description": "Keuntungan yang menarik dengan harga kompetitif di pasaran"
+        },
+        {
+          "icon": "🚚",
+          "title": "Distribusi Mudah",
+          "description": "Sistem distribusi yang efisien dan tepat waktu"
+        },
+        {
+          "icon": "🤝",
+          "title": "Kemitraan Jangka Panjang",
+          "description": "Membangun hubungan bisnis yang berkelanjutan"
+        },
+        {
+          "icon": "📊",
+          "title": "Potensi Pasar Besar",
+          "description": "Produk dengan permintaan tinggi di segmen kesehatan alami"
+        }
+      ]
+    },
+    "cta": "Bergabung Sebagai Mitra"
+  },
+  "contact": {
+    "badge": "Hubungi Kami",
+    "title": "Mari Bermitra Bersama",
+    "subtitle": "Kami terbuka untuk peluang kemitraan dan distribusi. Hubungi kami untuk informasi lebih lanjut tentang produk dan skema kerja sama",
+    "contactInfo": "Informasi Kontak",
+    "methods": {
+      "phone": "Telepon",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "instagram": "Instagram"
+    },
+    "address": "Alamat Kantor",
+    "cta": {
+      "title": "Tertarik Bermitra?",
+      "description": "Bergabunglah dengan jaringan distribusi kami dan kembangkan bisnis Anda dengan produk berkualitas tinggi yang diminati pasar",
+      "benefits": [
+        "Proses kemitraan yang mudah",
+        "Dukungan penuh dari tim kami",
+        "Margin keuntungan kompetitif",
+        "Produk dengan legalitas lengkap"
+      ],
+      "whatsapp": "Hubungi via WhatsApp",
+      "email": "Atau kirim email kepada kami"
+    },
+    "socialProof": {
+      "text": "Dipercaya oleh mitra distribusi terkemuka di Jabodetabek dan Jawa Barat",
+      "items": [
+        "Legalitas Lengkap",
+        "Produk Berkualitas",
+        "Terpercaya Sejak 2021"
+      ]
+    }
+  },
+  "footer": {
+    "description": "Produk rempah berbasis jahe alami yang menghangatkan tubuh dan menjaga daya tahan. Diproduksi secara higienis dengan legalitas lengkap.",
+    "quickLinks": "Navigasi",
+    "contactInfo": "Kontak",
+    "bottom": {
+      "rights": "All rights reserved.",
+      "legal": "NIB: {{nib}} | NPWP: {{npwp}}"
+    }
+  },
+  "language": {
+    "switch": "English",
+    "current": "ID"
+  }
+}

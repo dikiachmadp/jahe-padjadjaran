@@ -7,28 +7,8 @@ const About = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
 
-  const features = [
-    {
-      icon: '🏢',
-      title: 'about.features.0.title',
-      description: 'about.features.0.description'
-    },
-    {
-      icon: '🌿',
-      title: 'about.features.1.title',
-      description: 'about.features.1.description'
-    },
-    {
-      icon: '🎯',
-      title: 'about.features.2.title',
-      description: 'about.features.2.description'
-    },
-    {
-      icon: '🤝',
-      title: 'about.features.3.title',
-      description: 'about.features.3.description'
-    }
-  ];
+  // Get translated features array using returnObjects option
+  const features = t('about.features', { returnObjects: true }) || [];
 
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-warmth-50 to-white">
@@ -53,7 +33,7 @@ const About = () => {
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {features.map((feature, index) => (
+          {Array.isArray(features) && features.map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -63,10 +43,10 @@ const About = () => {
             >
               <div className="text-5xl mb-4">{feature.icon}</div>
               <h3 className="text-xl font-display font-bold text-heritage-900 mb-3">
-                {t(feature.title)}
+                {feature.title}
               </h3>
               <p className="text-heritage-600 font-body leading-relaxed">
-                {t(feature.description)}
+                {feature.description}
               </p>
             </motion.div>
           ))}

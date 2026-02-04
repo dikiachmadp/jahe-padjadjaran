@@ -7,6 +7,10 @@ const Product = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
 
+  // Get translated arrays using returnObjects option
+  const benefits = t('product.benefits', { returnObjects: true }) || [];
+  const features = t('product.features', { returnObjects: true }) || [];
+
   return (
     <section id="product" className="py-20 bg-white">
       <div className="section-container">
@@ -72,7 +76,7 @@ const Product = () => {
               {t('product.benefitsTitle')}
             </h3>
             <div className="space-y-4">
-              {PRODUCT_INFO.benefits.map((benefit, index) => (
+              {Array.isArray(benefits) && benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
@@ -87,7 +91,7 @@ const Product = () => {
                   </div>
                   <div className="flex-1">
                     <p className="text-lg font-body text-heritage-800">
-                      {t(`product.benefits.${index}`)}
+                      {typeof benefit === 'string' ? benefit : ''}
                     </p>
                   </div>
                 </motion.div>
@@ -106,7 +110,7 @@ const Product = () => {
             {t('product.featuresTitle')}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PRODUCT_INFO.features.map((feature, index) => (
+            {Array.isArray(features) && features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -120,7 +124,7 @@ const Product = () => {
                   </span>
                 </div>
                 <p className="text-heritage-800 font-body leading-relaxed">
-                  {t(`product.features.${index}`)}
+                  {typeof feature === 'string' ? feature : ''}
                 </p>
               </motion.div>
             ))}

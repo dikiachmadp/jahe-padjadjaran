@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { COMPANY_INFO, CTA_BENEFITS, SOCIAL_PROOF_ITEMS } from '../data/constants';
+import { COMPANY_INFO } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
 
-  // Use static arrays from constants - prevents t().map() crash
-  const ctaBenefits = CTA_BENEFITS;
-  const socialProofItems = SOCIAL_PROOF_ITEMS;
+  // Get translated arrays using returnObjects option
+  const ctaBenefits = t('contact.cta.benefits', { returnObjects: true }) || [];
+  const socialProofItems = t('contact.socialProof.items', { returnObjects: true }) || [];
 
   const contactMethods = [
     {
