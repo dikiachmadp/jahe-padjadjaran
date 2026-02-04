@@ -24,7 +24,7 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-heritage-800 via-heritage-700 to-warmth-700"
     >
       {/* Decorative Background Elements */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-warmth-400 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-warmth-300 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
@@ -140,36 +140,14 @@ const Hero = () => {
             className="relative"
           >
             <div className="relative w-full aspect-square max-w-lg mx-auto">
-              {/* Decorative circles */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 180, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute inset-0 bg-gradient-to-br from-warmth-400/20 to-warmth-600/20 rounded-full blur-2xl"
-              ></motion.div>
+              {/* Decorative circles - GPU accelerated with CSS animation */}
+              <div className="absolute inset-0 bg-gradient-to-br from-warmth-400/20 to-warmth-600/20 rounded-full blur-2xl gpu-accelerated animate-[float-rotate_20s_linear_infinite]"></div>
 
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [360, 180, 0],
-                }}
-                transition={{
-                  duration: 15,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute inset-8 bg-gradient-to-tr from-heritage-400/20 to-heritage-600/20 rounded-full blur-xl"
-              ></motion.div>
+              <div className="absolute inset-8 bg-gradient-to-tr from-heritage-400/20 to-heritage-600/20 rounded-full blur-xl gpu-accelerated animate-[float-rotate_15s_linear_infinite_reverse]"></div>
 
               {/* Product showcase placeholder */}
               <div className="relative z-10 w-full h-full flex items-center justify-center">
-                <div className="w-80 h-80 bg-white/10 backdrop-blur-md rounded-full border-4 border-white/20 flex items-center justify-center shadow-2xl">
+                <div className="w-80 h-80 bg-white/10 backdrop-blur-md rounded-full border-4 border-white/20 flex items-center justify-center shadow-2xl gpu-accelerated">
                   <div className="text-center">
                     <div className="text-8xl mb-4">🫚</div>
                     <div className="text-2xl font-display font-bold text-white">
@@ -186,20 +164,16 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - GPU accelerated */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
-        >
-          <div className="w-1 h-3 bg-white/50 rounded-full"></div>
-        </motion.div>
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 relative">
+          <div className="w-1 h-3 bg-white/50 rounded-full animate-[scroll-indicator_1.5s_ease-in-out_infinite]"></div>
+        </div>
       </motion.div>
     </section>
   );

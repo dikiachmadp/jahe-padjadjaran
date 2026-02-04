@@ -59,38 +59,38 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-warmth-50 to-heritage-50">
+    <section id="contact" className="py-16 md:py-20 bg-gradient-to-b from-warmth-50 to-heritage-50 overflow-x-hidden">
       <div className="section-container">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block px-4 py-2 bg-warmth-100 text-warmth-700 rounded-full text-sm font-sans font-medium mb-4">
             {t('contact.badge')}
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-heritage-900 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-heritage-900 mb-6">
             {t('contact.title')}
           </h2>
-          <p className="text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed">
+          <p className="text-lg md:text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed px-4">
             {t('contact.subtitle')}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-start">
           {/* Contact Methods */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-display font-bold text-heritage-900 mb-8">
+            <h3 className="text-xl md:text-2xl font-display font-bold text-heritage-900 mb-6 md:mb-8">
               {t('contact.contactInfo')}
             </h3>
 
-            <div className="space-y-4 mb-8">
+            <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
               {contactMethods.map((method, index) => (
                 <motion.a
                   key={index}
@@ -100,21 +100,21 @@ const Contact = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={isVisible ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="block card-elevated p-6 hover:scale-105 group"
+                  className="block card-elevated p-4 md:p-6 hover:scale-[1.02] group gpu-accelerated"
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-14 h-14 bg-gradient-to-br ${method.color} rounded-xl flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all`}>
+                  <div className="flex items-center space-x-3 md:space-x-4">
+                    <div className={`w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br ${method.color} rounded-xl md:rounded-xl flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all`}>
                       {method.icon}
                     </div>
                     <div className="flex-1">
-                      <div className="text-sm text-heritage-600 font-sans mb-1">
+                      <div className="text-sm text-heritage-600 font-sans mb-0.5 md:mb-1">
                         {t(`contact.methods.${method.key}`)}
                       </div>
-                      <div className="text-lg font-body font-semibold text-heritage-900">
+                      <div className="text-base md:text-lg font-body font-semibold text-heritage-900 break-all">
                         {method.value}
                       </div>
                     </div>
-                    <svg className="w-5 h-5 text-heritage-400 group-hover:text-warmth-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 md:w-5 md:h-5 text-heritage-400 group-hover:text-warmth-600 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
@@ -127,11 +127,11 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="card-elevated p-6"
+              className="card-elevated p-4 md:p-6"
             >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-start space-x-3 md:space-x-4">
+                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -140,7 +140,7 @@ const Contact = () => {
                   <div className="text-sm text-heritage-600 font-sans mb-1">
                     {t('contact.address')}
                   </div>
-                  <div className="text-heritage-900 font-body leading-relaxed">
+                  <div className="text-heritage-900 font-body leading-relaxed text-sm md:text-base break-word">
                     {COMPANY_INFO.address}
                   </div>
                 </div>
@@ -153,29 +153,29 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-gradient-to-br from-heritage-800 to-heritage-700 rounded-3xl p-8 md:p-12 text-white shadow-2xl sticky top-24"
+            className="bg-gradient-to-br from-heritage-800 to-heritage-700 rounded-2xl md:rounded-3xl p-6 md:p-12 text-white shadow-2xl"
           >
-            <div className="text-center mb-8">
-              <div className="w-20 h-20 bg-warmth-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                <span className="text-4xl">🤝</span>
+            <div className="text-center mb-6 md:mb-8">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-warmth-400 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-xl">
+                <span className="text-3xl md:text-4xl">🤝</span>
               </div>
-              <h3 className="text-3xl font-display font-bold mb-4 text-warmth-300">
+              <h3 className="text-xl md:text-3xl font-display font-bold mb-2 md:mb-4 text-warmth-300">
                 {t('contact.cta.title')}
               </h3>
-              <p className="text-warmth-100 font-body text-lg leading-relaxed">
+              <p className="text-warmth-100 font-body text-base md:text-lg leading-relaxed">
                 {t('contact.cta.description')}
               </p>
             </div>
 
-            <div className="space-y-4 mb-8">
+            <div className="space-y-2 md:space-y-4 mb-6 md:mb-8">
               {ctaBenefits.map((benefit, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-warmth-400 rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div key={index} className="flex items-center space-x-2 md:space-x-3">
+                  <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 bg-warmth-400 rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-warmth-100 font-body">
+                  <span className="text-warmth-100 font-body text-sm md:text-base">
                     {benefit}
                   </span>
                 </div>
@@ -186,15 +186,15 @@ const Contact = () => {
               href={`https://wa.me/${COMPANY_INFO.whatsapp.replace(/\D/g, '')}?text=Halo,%20saya%20tertarik%20untuk%20bermitra%20dengan%20Permen%20Jahe%20Padjajaran`}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center px-8 py-4 text-lg font-semibold text-heritage-900 bg-warmth-400 rounded-full hover:bg-warmth-300 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+              className="block w-full text-center px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold text-heritage-900 bg-warmth-400 rounded-full hover:bg-warmth-300 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
             >
               {t('contact.cta.whatsapp')}
             </a>
 
-            <div className="mt-6 text-center">
+            <div className="mt-4 md:mt-6 text-center">
               <a
                 href={`mailto:${COMPANY_INFO.email}?subject=Inquiry%20Kemitraan%20Permen%20Jahe%20Padjajaran`}
-                className="text-warmth-200 hover:text-warmth-100 font-body text-sm underline transition-colors"
+                className="text-warmth-200 hover:text-warmth-100 font-body text-xs md:text-sm underline transition-colors"
               >
                 {t('contact.cta.email')}
               </a>
@@ -207,15 +207,15 @@ const Contact = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 bg-white rounded-3xl p-8 shadow-xl text-center"
+          className="mt-12 md:mt-16 bg-white rounded-xl md:rounded-3xl p-6 md:p-8 shadow-xl text-center overflow-x-hidden"
         >
-          <p className="text-heritage-700 font-body text-lg mb-4">
+          <p className="text-heritage-700 font-body text-base md:text-lg mb-4">
             {t('contact.socialProof.text')}
           </p>
-          <div className="flex items-center justify-center space-x-8 text-sm text-heritage-600 font-sans">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:space-x-8 text-xs md:text-sm text-heritage-600 font-sans">
             {socialProofItems.map((item, index) => (
               <div key={index} className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>{item}</span>

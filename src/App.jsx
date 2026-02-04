@@ -11,6 +11,9 @@ import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   useEffect(() => {
+    // Scroll to top on page load/refresh
+    window.scrollTo(0, 0);
+
     // Set page title and meta description
     document.title = 'Permen Jahe Padjajaran';
 
@@ -25,9 +28,10 @@ function App() {
 
   return (
     <LanguageProvider>
-      <div className="relative">
+      {/* overflow-x-hidden to prevent horizontal scroll */}
+      <div className="relative overflow-x-hidden">
         <Header />
-        <main>
+        <main className="overflow-x-hidden">
           <Hero />
           <About />
           <Product />

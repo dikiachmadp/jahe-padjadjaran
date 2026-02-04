@@ -115,7 +115,7 @@ const MobileMenu = ({ isOpen, onClose, activeSection, onNavigate }) => {
             animate="open"
             exit="closed"
             variants={mobileMenuVariants}
-            className="md:hidden fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl z-50 overflow-y-auto"
+            className="md:hidden fixed top-0 right-0 bottom-0 w-[85vw] max-w-[320px] bg-white shadow-2xl z-50 overflow-y-auto overflow-x-hidden"
             onClick={handleMenuClick}
           >
             {/* Mobile Menu Header */}
@@ -143,8 +143,8 @@ const MobileMenu = ({ isOpen, onClose, activeSection, onNavigate }) => {
                   custom={index}
                   variants={menuItemVariants}
                   className={`w-full flex items-center space-x-4 px-4 py-4 rounded-xl font-sans font-medium transition-all duration-300 ${activeSection === item.href
-                      ? 'bg-warmth-50 text-warmth-600 shadow-sm'
-                      : 'text-heritage-800 hover:bg-heritage-50 hover:text-warmth-600'
+                    ? 'bg-warmth-50 text-warmth-600 shadow-sm'
+                    : 'text-heritage-800 hover:bg-heritage-50 hover:text-warmth-600'
                     }`}
                 >
                   <span
@@ -310,8 +310,8 @@ const Header = () => {
 
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen
-            ? 'bg-white/95 backdrop-blur-md shadow-lg'
-            : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-md shadow-lg'
+          : 'bg-transparent'
           }`}
       >
         <nav className="section-container py-4">
@@ -370,8 +370,8 @@ const Header = () => {
               <motion.button
                 onClick={toggleLanguage}
                 className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 border-2 ${isScrolled || isMobileMenuOpen
-                    ? 'border-heritage-200 text-heritage-800 hover:border-warmth-500'
-                    : 'border-white/30 text-white hover:border-warmth-300 hover:bg-white/10'
+                  ? 'border-heritage-200 text-heritage-800 hover:border-warmth-500'
+                  : 'border-white/30 text-white hover:border-warmth-300 hover:bg-white/10'
                   }`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -396,8 +396,8 @@ const Header = () => {
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`md:hidden relative w-10 h-10 rounded-lg transition-colors flex items-center justify-center ${isScrolled || isMobileMenuOpen
-                  ? 'text-heritage-900 hover:bg-heritage-100'
-                  : 'text-white hover:bg-white/10'
+                ? 'text-heritage-900 hover:bg-heritage-100'
+                : 'text-white hover:bg-white/10'
                 }`}
               aria-label="Toggle menu"
               initial={{ opacity: 0, x: 20 }}
