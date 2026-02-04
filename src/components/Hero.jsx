@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   const scrollToProduct = () => {
     const element = document.querySelector('#product');
     if (element) {
@@ -52,7 +55,7 @@ const Hero = () => {
               className="inline-block mb-6"
             >
               <span className="px-4 py-2 bg-warmth-400/20 backdrop-blur-sm text-warmth-100 rounded-full text-sm font-sans font-medium border border-warmth-400/30">
-                🌿 Produk Lokal Berkualitas
+                {t('hero.badge')}
               </span>
             </motion.div>
 
@@ -62,8 +65,8 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight"
             >
-              Permen Jahe
-              <span className="block text-warmth-300">Padjajaran</span>
+              {t('hero.title')}
+              <span className="block text-warmth-300">{t('hero.subtitle')}</span>
             </motion.h1>
 
             <motion.p
@@ -72,9 +75,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl md:text-2xl text-warmth-100 mb-8 font-body leading-relaxed"
             >
-              Kehangatan rempah nusantara dalam setiap butir.
-              Permen berbasis jahe alami yang menjaga daya tahan tubuh dan
-              memberikan kenyamanan pada tenggorokan.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -87,13 +88,13 @@ const Hero = () => {
                 onClick={scrollToProduct}
                 className="btn-primary text-lg px-10 py-4"
               >
-                Lihat Produk
+                {t('hero.viewProducts')}
               </button>
               <a
                 href="#partners"
                 className="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-white border-2 border-white/30 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
               >
-                Jadi Mitra
+                {t('hero.becomePartner')}
               </a>
             </motion.div>
 
@@ -109,7 +110,7 @@ const Hero = () => {
                   100%
                 </div>
                 <div className="text-sm text-warmth-100 font-sans">
-                  Bahan Alami
+                  {t('hero.stats.natural')}
                 </div>
               </div>
               <div className="text-center lg:text-left">
@@ -117,7 +118,7 @@ const Hero = () => {
                   2021
                 </div>
                 <div className="text-sm text-warmth-100 font-sans">
-                  Sejak
+                  {t('hero.stats.since')}
                 </div>
               </div>
               <div className="text-center lg:text-left">
@@ -125,7 +126,7 @@ const Hero = () => {
                   4+
                 </div>
                 <div className="text-sm text-warmth-100 font-sans">
-                  Mitra Distribusi
+                  {t('hero.stats.partners')}
                 </div>
               </div>
             </motion.div>
@@ -152,7 +153,7 @@ const Hero = () => {
                 }}
                 className="absolute inset-0 bg-gradient-to-br from-warmth-400/20 to-warmth-600/20 rounded-full blur-2xl"
               ></motion.div>
-              
+
               <motion.div
                 animate={{
                   scale: [1, 1.2, 1],
@@ -172,10 +173,10 @@ const Hero = () => {
                   <div className="text-center">
                     <div className="text-8xl mb-4">🫚</div>
                     <div className="text-2xl font-display font-bold text-white">
-                      Jahe Berkualitas
+                      {t('hero.productShowcase')}
                     </div>
                     <div className="text-warmth-200 font-sans mt-2">
-                      Processed with Care
+                      {t('hero.processedWithCare')}
                     </div>
                   </div>
                 </div>

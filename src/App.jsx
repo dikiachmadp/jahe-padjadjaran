@@ -7,6 +7,7 @@ import Pricing from './components/Pricing';
 import Partners from './components/Partners';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   useEffect(() => {
@@ -23,18 +24,20 @@ function App() {
   }, []);
 
   return (
-    <div className="relative">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Product />
-        <Pricing />
-        <Partners />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="relative">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Product />
+          <Pricing />
+          <Partners />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

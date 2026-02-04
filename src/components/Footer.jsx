@@ -1,6 +1,9 @@
 import { COMPANY_INFO, NAVIGATION } from '../data/constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -35,8 +38,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-warmth-200 font-body leading-relaxed mb-6 max-w-md">
-              Produk rempah berbasis jahe alami yang menghangatkan tubuh dan menjaga
-              daya tahan. Diproduksi secara higienis dengan legalitas lengkap.
+              {t('footer.description')}
             </p>
             <div className="flex items-center space-x-4">
               <a
@@ -76,7 +78,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-warmth-300">
-              Navigasi
+              {t('footer.quickLinks')}
             </h4>
             <ul className="space-y-3">
               {NAVIGATION.map((item) => (
@@ -85,7 +87,7 @@ const Footer = () => {
                     onClick={() => scrollToSection(item.href)}
                     className="text-warmth-200 hover:text-warmth-300 font-body transition-colors"
                   >
-                    {item.label}
+                    {t(`nav.${item.key}`)}
                   </button>
                 </li>
               ))}
@@ -95,7 +97,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h4 className="font-display font-bold text-lg mb-6 text-warmth-300">
-              Kontak
+              {t('footer.contactInfo')}
             </h4>
             <ul className="space-y-3 text-warmth-200 font-body">
               <li>
@@ -125,14 +127,12 @@ const Footer = () => {
         <div className="pt-8 border-t border-warmth-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-warmth-300 text-sm font-body text-center md:text-left">
-              <p>&copy; {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} {COMPANY_INFO.name}. {t('footer.bottom.rights')}</p>
               <p className="mt-1">
                 NIB: {COMPANY_INFO.legal.nib} | NPWP: {COMPANY_INFO.legal.npwp}
               </p>
             </div>
             <div className="flex items-center space-x-2 text-warmth-300 text-sm font-body">
-              {/* <span>Local Product</span>*/}
-              {/* <span className="text-red-400"></span> */}
               <span>Indonesian Heritage</span>
             </div>
           </div>
@@ -143,3 +143,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

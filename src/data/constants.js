@@ -5,7 +5,7 @@ export const COMPANY_INFO = {
   email: 'jahepadjajaran@gmail.com',
   whatsapp: '0812-2188-6566',
   instagram: '@jahepadjajaran.id',
-  
+
   legal: {
     registrationNumber: 'AHU-040034.AH.01.30.Tahun 2022',
     registrationDate: '22 September 2022',
@@ -71,10 +71,10 @@ export const PARTNERS = [
 ];
 
 export const NAVIGATION = [
-  { label: 'Beranda', href: '#hero' },
-  { label: 'Tentang Kami', href: '#about' },
-  { label: 'Produk', href: '#product' },
-  { label: 'Harga', href: '#pricing' },
-  { label: 'Mitra', href: '#partners' },
-  { label: 'Kontak', href: '#contact' }
+  { key: 'home', href: '#hero' },
+  { key: 'about', href: '#about' },
+  { key: 'products', href: '#product' },
+  { key: 'pricing', href: '#pricing' },
+  { key: 'partners', href: '#partners' },
+  { key: 'contact', href: '#contact' }
 ];

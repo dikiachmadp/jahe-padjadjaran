@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { PRODUCT_INFO } from '../data/constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const Product = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
+  const { t } = useLanguage();
 
   return (
     <section id="product" className="py-20 bg-white">
@@ -16,13 +18,13 @@ const Product = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 bg-warmth-100 text-warmth-700 rounded-full text-sm font-sans font-medium mb-4">
-            Produk Unggulan
+            {t('product.badge')}
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-heritage-900 mb-6">
-            {PRODUCT_INFO.name}
+            {t('product.title')}
           </h2>
           <p className="text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed">
-            {PRODUCT_INFO.description}
+            {t('product.description')}
           </p>
         </motion.div>
 
@@ -38,16 +40,16 @@ const Product = () => {
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-warmth-200 rounded-full blur-3xl opacity-40"></div>
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-heritage-200 rounded-full blur-3xl opacity-40"></div>
-              
+
               <div className="relative z-10 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-9xl mb-6">🫙</div>
                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
                     <div className="text-3xl font-display font-bold text-heritage-900 mb-2">
-                      Toples Praktis
+                      {t('product.showcase.title')}
                     </div>
                     <div className="text-lg text-heritage-600 font-body">
-                      {PRODUCT_INFO.packaging.piecesPerJar} butir per toples
+                      {PRODUCT_INFO.packaging.piecesPerJar} {t('product.showcase.subtitle')}
                     </div>
                     <div className="mt-4 flex items-center justify-center space-x-2">
                       <div className="w-3 h-3 bg-warmth-400 rounded-full animate-pulse"></div>
@@ -67,7 +69,7 @@ const Product = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <h3 className="text-3xl font-display font-bold text-heritage-900 mb-8">
-              Manfaat untuk Kesehatan
+              {t('product.benefitsTitle')}
             </h3>
             <div className="space-y-4">
               {PRODUCT_INFO.benefits.map((benefit, index) => (
@@ -85,7 +87,7 @@ const Product = () => {
                   </div>
                   <div className="flex-1">
                     <p className="text-lg font-body text-heritage-800">
-                      {benefit}
+                      {t(`product.benefits.${index}`)}
                     </p>
                   </div>
                 </motion.div>
@@ -101,7 +103,7 @@ const Product = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <h3 className="text-3xl font-display font-bold text-heritage-900 mb-8 text-center">
-            Keunggulan Produk
+            {t('product.featuresTitle')}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {PRODUCT_INFO.features.map((feature, index) => (
@@ -118,7 +120,7 @@ const Product = () => {
                   </span>
                 </div>
                 <p className="text-heritage-800 font-body leading-relaxed">
-                  {feature}
+                  {t(`product.features.${index}`)}
                 </p>
               </motion.div>
             ))}
@@ -134,10 +136,10 @@ const Product = () => {
         >
           <div className="text-center mb-8">
             <h3 className="text-3xl font-display font-bold mb-3">
-              Spesifikasi Kemasan
+              {t('product.packaging.title')}
             </h3>
             <p className="text-warmth-100 font-body text-lg">
-              Dikemas dengan praktis untuk memudahkan distribusi dan penjualan
+              {t('product.packaging.subtitle')}
             </p>
           </div>
 
@@ -145,20 +147,20 @@ const Product = () => {
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
               <div className="text-5xl mb-3">🫙</div>
               <div className="text-2xl font-display font-bold mb-2">
-                {PRODUCT_INFO.packaging.piecesPerJar} Butir
+                {PRODUCT_INFO.packaging.piecesPerJar} {t('product.packaging.perPiece')}
               </div>
               <div className="text-warmth-100 font-sans text-sm">
-                Per Toples
+                {t('product.packaging.perJar')}
               </div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
               <div className="text-5xl mb-3">📦</div>
               <div className="text-2xl font-display font-bold mb-2">
-                {PRODUCT_INFO.packaging.jarsPerCarton} Toples
+                {PRODUCT_INFO.packaging.jarsPerCarton} {t('product.packaging.perJar')}
               </div>
               <div className="text-warmth-100 font-sans text-sm">
-                Per Karton
+                {t('product.packaging.perCarton')}
               </div>
             </div>
 
@@ -168,7 +170,7 @@ const Product = () => {
                 Rp {PRODUCT_INFO.packaging.pricePerPiece.toLocaleString('id-ID')}
               </div>
               <div className="text-warmth-100 font-sans text-sm">
-                Per Butir
+                {t('product.packaging.perPiece')}
               </div>
             </div>
           </div>

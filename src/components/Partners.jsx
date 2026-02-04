@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { PARTNERS } from '../data/constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const Partners = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
+  const { t } = useLanguage();
 
   return (
     <section id="partners" className="py-20 bg-white">
@@ -16,14 +18,13 @@ const Partners = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 bg-warmth-100 text-warmth-700 rounded-full text-sm font-sans font-medium mb-4">
-            Mitra Distribusi
+            {t('partners.badge')}
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-heritage-900 mb-6">
-            Dipercaya oleh Mitra Terpilih
+            {t('partners.title')}
           </h2>
           <p className="text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed">
-            Kami telah menjalin kerja sama distribusi dengan berbagai perusahaan dan
-            toko terpercaya di wilayah Jabodetabek dan Jawa Barat
+            {t('partners.subtitle')}
           </p>
         </motion.div>
 
@@ -39,7 +40,7 @@ const Partners = () => {
               {PARTNERS.length}+
             </div>
             <div className="text-heritage-700 font-body">
-              Mitra Aktif
+              {t('partners.stats.active')}
             </div>
           </div>
 
@@ -48,7 +49,7 @@ const Partners = () => {
               2021
             </div>
             <div className="text-heritage-700 font-body">
-              Sejak
+              {t('partners.stats.since')}
             </div>
           </div>
 
@@ -57,7 +58,7 @@ const Partners = () => {
               100%
             </div>
             <div className="text-heritage-700 font-body">
-              Kepuasan Mitra
+              {t('partners.stats.satisfaction')}
             </div>
           </div>
 
@@ -66,7 +67,7 @@ const Partners = () => {
               2+
             </div>
             <div className="text-heritage-700 font-body">
-              Wilayah Coverage
+              {t('partners.stats.coverage')}
             </div>
           </div>
         </motion.div>
@@ -87,12 +88,12 @@ const Partners = () => {
                     {index === 0 ? '🏢' : index === 1 ? '🚚' : index === 2 ? '🏪' : '🤝'}
                   </span>
                 </div>
-                
+
                 <div className="flex-1">
                   <h3 className="text-xl font-display font-bold text-heritage-900 mb-2">
                     {partner.name}
                   </h3>
-                  
+
                   <div className="space-y-2 text-heritage-600 font-body">
                     <div className="flex items-center space-x-2">
                       <svg className="w-5 h-5 text-warmth-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,18 +102,18 @@ const Partners = () => {
                       </svg>
                       <span>{partner.location}</span>
                     </div>
-                    
+
                     <div className="flex items-center space-x-2">
                       <svg className="w-5 h-5 text-warmth-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      <span>Sejak {partner.startYear}</span>
+                      <span>{t('partners.since', { year: partner.startYear })}</span>
                     </div>
                   </div>
-                  
+
                   <div className="mt-4 inline-flex items-center space-x-2 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-sans font-medium">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>Aktif</span>
+                    <span>{t('partners.active')}</span>
                   </div>
                 </div>
               </div>
@@ -129,47 +130,15 @@ const Partners = () => {
         >
           <div className="text-center mb-10">
             <h3 className="text-3xl font-display font-bold mb-4">
-              Mengapa Bermitra dengan Kami?
+              {t('partners.benefits.title')}
             </h3>
             <p className="text-warmth-100 font-body text-lg max-w-2xl mx-auto">
-              Kami berkomitmen membangun ekosistem bisnis yang saling menguntungkan
-              dan berkelanjutan
+              {t('partners.benefits.subtitle')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '🎯',
-                title: 'Produk Berkualitas',
-                description: 'Produk dengan standar kualitas tinggi dan legalitas lengkap'
-              },
-              {
-                icon: '💼',
-                title: 'Dukungan Penuh',
-                description: 'Tim kami siap mendukung keberhasilan mitra dalam penjualan'
-              },
-              {
-                icon: '📈',
-                title: 'Margin Kompetitif',
-                description: 'Keuntungan yang menarik dengan harga kompetitif di pasaran'
-              },
-              {
-                icon: '🚚',
-                title: 'Distribusi Mudah',
-                description: 'Sistem distribusi yang efisien dan tepat waktu'
-              },
-              {
-                icon: '🤝',
-                title: 'Kemitraan Jangka Panjang',
-                description: 'Membangun hubungan bisnis yang berkelanjutan'
-              },
-              {
-                icon: '📊',
-                title: 'Potensi Pasar Besar',
-                description: 'Produk dengan permintaan tinggi di segmen kesehatan alami'
-              }
-            ].map((benefit, index) => (
+            {t('partners.benefits.list').map((benefit, index) => (
               <div
                 key={index}
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"
@@ -190,7 +159,7 @@ const Partners = () => {
               href="#contact"
               className="inline-flex items-center justify-center px-10 py-4 text-lg font-semibold text-warmth-700 bg-white rounded-full hover:bg-warmth-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
             >
-              Bergabung Sebagai Mitra
+              {t('partners.cta')}
             </a>
           </div>
         </motion.div>
@@ -200,3 +169,4 @@ const Partners = () => {
 };
 
 export default Partners;
+
