@@ -3,10 +3,14 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/', // WAJIB untuk Vercel
+
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
+    // ❌ hapus terser
+    // minify: 'terser',
+
     rollupOptions: {
       output: {
         manualChunks: {
@@ -16,6 +20,7 @@ export default defineConfig({
       }
     }
   },
+
   server: {
     port: 3000
   }
