@@ -21,7 +21,7 @@ export const COMPANY_INFO = {
 };
 
 export const PRODUCT_INFO = {
-  name: 'Permen Jahe Padjajaran',
+  name: 'Permen Jahe Padjadaran',
   description: 'Permen berbasis rempah yang dibuat dari bahan alami berkualitas tinggi',
   benefits: [
     'Menghangatkan tubuh',
@@ -46,6 +46,73 @@ export const PRODUCT_INFO = {
     profitPerCarton: 75000
   }
 };
+
+// =============================================================================
+// STATIC ARRAYS - Moved from translations.js to prevent t().map() crashes
+// =============================================================================
+
+export const PRICING_FEATURES = {
+  partnerPrice: {
+    features: [
+      'Sistem pembayaran fleksibel',
+      'Dukungan promosi',
+      'Produk berkualitas terjamin'
+    ]
+  },
+  retailPrice: {
+    features: [
+      'Harga kompetitif',
+      'Margin keuntungan jelas',
+      'Mudah dijual kembali'
+    ]
+  }
+};
+
+export const PARTNERS_BENEFITS = [
+  {
+    icon: '🎯',
+    title: 'partners.benefits.0.title',
+    description: 'partners.benefits.0.description'
+  },
+  {
+    icon: '💼',
+    title: 'partners.benefits.1.title',
+    description: 'partners.benefits.1.description'
+  },
+  {
+    icon: '📈',
+    title: 'partners.benefits.2.title',
+    description: 'partners.benefits.2.description'
+  },
+  {
+    icon: '🚚',
+    title: 'partners.benefits.3.title',
+    description: 'partners.benefits.3.description'
+  },
+  {
+    icon: '🤝',
+    title: 'partners.benefits.4.title',
+    description: 'partners.benefits.4.description'
+  },
+  {
+    icon: '📊',
+    title: 'partners.benefits.5.title',
+    description: 'partners.benefits.5.description'
+  }
+];
+
+export const CTA_BENEFITS = [
+  'Proses kemitraan yang mudah',
+  'Dukungan penuh dari tim kami',
+  'Margin keuntungan kompetitif',
+  'Produk dengan legalitas lengkap'
+];
+
+export const SOCIAL_PROOF_ITEMS = [
+  'Legalitas Lengkap',
+  'Produk Berkualitas',
+  'Terpercaya Sejak 2021'
+];
 
 export const PARTNERS = [
   {

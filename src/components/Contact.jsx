@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { COMPANY_INFO } from '../data/constants';
+import { COMPANY_INFO, CTA_BENEFITS, SOCIAL_PROOF_ITEMS } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
+
+  // Use static arrays from constants - prevents t().map() crash
+  const ctaBenefits = CTA_BENEFITS;
+  const socialProofItems = SOCIAL_PROOF_ITEMS;
 
   const contactMethods = [
     {
@@ -164,7 +168,7 @@ const Contact = () => {
             </div>
 
             <div className="space-y-4 mb-8">
-              {t('contact.cta.benefits').map((benefit, index) => (
+              {ctaBenefits.map((benefit, index) => (
                 <div key={index} className="flex items-center space-x-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-warmth-400 rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,7 +213,7 @@ const Contact = () => {
             {t('contact.socialProof.text')}
           </p>
           <div className="flex items-center justify-center space-x-8 text-sm text-heritage-600 font-sans">
-            {t('contact.socialProof.items').map((item, index) => (
+            {socialProofItems.map((item, index) => (
               <div key={index} className="flex items-center space-x-2">
                 <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

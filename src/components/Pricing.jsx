@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { PRODUCT_INFO } from '../data/constants';
+import { PRODUCT_INFO, PRICING_FEATURES } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
 
 const Pricing = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
+
+  // Use static arrays from constants - prevents t().map() crash
+  const partnerFeatures = PRICING_FEATURES.partnerPrice.features;
+  const retailFeatures = PRICING_FEATURES.retailPrice.features;
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-warmth-50 to-white">
@@ -50,7 +54,7 @@ const Pricing = () => {
                 {t('pricing.partnerPrice.perCarton')}
               </div>
               <div className="space-y-3 text-left">
-                {t('pricing.partnerPrice.features').map((feature, index) => (
+                {partnerFeatures.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <svg className="w-5 h-5 text-warmth-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -86,7 +90,7 @@ const Pricing = () => {
                 {t('pricing.retailPrice.perJar')}
               </div>
               <div className="space-y-3 text-left">
-                {t('pricing.retailPrice.features').map((feature, index) => (
+                {retailFeatures.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <svg className="w-5 h-5 text-warmth-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
