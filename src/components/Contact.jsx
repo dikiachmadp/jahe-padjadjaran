@@ -130,7 +130,7 @@ const Contact = () => {
               className="card-elevated p-4 md:p-6"
             >
               <div className="flex items-start space-x-3 md:space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0">
                   <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
