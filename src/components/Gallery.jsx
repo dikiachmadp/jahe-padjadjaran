@@ -62,9 +62,6 @@ const Gallery = () => {
                                 />
                             </AnimatePresence>
                         </div>
-                        <p className="text-center mt-4 text-sm text-heritage-600 font-sans">
-                            Image {currentImage + 1} of {galleryImages.length}
-                        </p>
                     </motion.div>
 
                     {/* Thumbnails */}
@@ -74,17 +71,14 @@ const Gallery = () => {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="order-1 lg:order-2"
                     >
-                        <h3 className="text-2xl md:text-3xl font-display font-bold text-heritage-900 mb-8 text-left">
-                            Product Views
-                        </h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {galleryImages.map((image, index) => (
                                 <motion.button
                                     key={index}
                                     onClick={() => setCurrentImage(index)}
                                     className={`group relative w-full aspect-square rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-4 ${currentImage === index
-                                            ? 'border-warmth-500 shadow-2xl scale-105'
-                                            : 'border-transparent hover:border-warmth-300 hover:scale-105'
+                                        ? 'border-warmth-500 shadow-2xl scale-105'
+                                        : 'border-transparent hover:border-warmth-300 hover:scale-105'
                                         }`}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.98 }}
