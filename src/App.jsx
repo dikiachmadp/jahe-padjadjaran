@@ -5,6 +5,7 @@ import About from './components/About';
 import Product from './components/Product';
 import Pricing from './components/Pricing';
 import Partners from './components/Partners';
+import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { LanguageProvider } from './context/LanguageContext';
@@ -36,6 +37,7 @@ function App() {
           <About />
           <Product />
           <Partners />
+          <Gallery />
           <Contact />
         </main>
         <Footer />

@@ -142,5 +142,6 @@ export const NAVIGATION = [
   { key: 'about', href: '#about' },
   { key: 'products', href: '#product' },
   { key: 'partners', href: '#partners' },
+  { key: 'gallery', href: '#gallery' },
   { key: 'contact', href: '#contact' }
 ];

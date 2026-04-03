@@ -4,6 +4,7 @@
     "about": "About Us",
     "products": "Products",
     "partners": "Partners",
+    "gallery": "Gallery",
     "contact": "Contact",
     "contactUs": "Contact Us"
   },
@@ -237,5 +238,11 @@
   "language": {
     "switch": "Bahasa",
     "current": "EN"
+  },
+  "gallery": {
+    "badge": "Gallery",
+    "title": "Product Gallery",
+    "subtitle": "Premium Quality",
+    "description": "Explore our premium ginger candy products in various presentations and packaging options."
   }
 }

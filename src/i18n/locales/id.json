@@ -4,6 +4,7 @@
     "about": "Tentang Kami",
     "products": "Produk",
     "partners": "Mitra",
+    "gallery": "Galeri",
     "contact": "Kontak",
     "contactUs": "Hubungi Kami"
   },
@@ -237,5 +238,11 @@
   "language": {
     "switch": "English",
     "current": "ID"
+  },
+  "gallery": {
+    "badge": "Galeri Produk",
+    "title": "Galeri Produk",
+    "subtitle": "Kualitas Premium",
+    "description": "Jelajahi produk permen jahe berkualitas tinggi kami dalam berbagai presentasi kemasan."
   }
 }
