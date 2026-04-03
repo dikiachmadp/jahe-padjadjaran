@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAVIGATION } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
+import logo from '../assets/logos/logo.png';
 
 // Navigation icons configuration
 const NAV_ICONS = {
@@ -18,11 +19,6 @@ const NAV_ICONS = {
   products: (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-    </svg>
-  ),
-  pricing: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
   ),
   partners: (
@@ -314,7 +310,7 @@ const Header = () => {
           : 'bg-transparent'
           }`}
       >
-        <nav className="section-container py-4">
+        <nav className="section-container">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.button
@@ -324,22 +320,12 @@ const Header = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                <span className="text-white text-xl font-bold">JP</span>
-              </div>
-              <div className="flex flex-col">
-                <span
-                  className={`font-display font-bold text-lg transition-colors ${isScrolled || isMobileMenuOpen ? 'text-heritage-900' : 'text-white'
-                    }`}
-                >
-                  Jahe Padjajaran
-                </span>
-                <span
-                  className={`text-xs font-sans transition-colors ${isScrolled || isMobileMenuOpen ? 'text-heritage-600' : 'text-warmth-100'
-                    }`}
-                >
-                  Rempah Nusantara
-                </span>
+              <div className="w-40 md:w-60 overflow-hidden">
+                <img
+                  src={logo}
+                  alt="Jahe Padjajaran Logo"
+                  className="w-full"
+                />
               </div>
             </motion.button>
 

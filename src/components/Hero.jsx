@@ -39,7 +39,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="section-container relative z-10 py-20">
+      <div className="section-container mt-4 relative z-10 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <motion.div
@@ -149,7 +149,11 @@ const Hero = () => {
               <div className="relative z-10 w-full h-full flex items-center justify-center">
                 <div className="w-80 h-80 bg-white/10 backdrop-blur-md rounded-full border-4 border-white/20 flex items-center justify-center shadow-2xl gpu-accelerated">
                   <div className="text-center">
-                    <div className="text-8xl mb-4">🫚</div>
+                    <img
+                      src="/hero.png"
+                      alt="Hero Image"
+                      className="w-40 object-contain mx-auto"
+                    />
                     <div className="text-2xl font-display font-bold text-white">
                       {t('hero.productShowcase')}
                     </div>

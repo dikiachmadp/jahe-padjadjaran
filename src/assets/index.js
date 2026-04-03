@@ -6,7 +6,7 @@
 // =============================================================================
 
 // Logos
-import logo from './logos/logo.svg'
+import logo from './logos/logo.png'
 
 // Images
 import heroBg from './images/hero-bg.svg'
@@ -26,16 +26,16 @@ import placeholder from './placeholders/placeholder.svg'
 export {
   // Logos
   logo,
-  
+
   // Images
   heroBg,
-  
+
   // Illustrations
   productShowcase,
-  
+
   // Icons
   placeholderIcon,
-  
+
   // Placeholders
   placeholder
 }

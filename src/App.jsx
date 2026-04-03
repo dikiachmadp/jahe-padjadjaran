@@ -35,7 +35,6 @@ function App() {
           <Hero />
           <About />
           <Product />
-          <Pricing />
           <Partners />
           <Contact />
         </main>

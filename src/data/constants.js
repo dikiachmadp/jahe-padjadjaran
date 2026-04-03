@@ -141,7 +141,6 @@ export const NAVIGATION = [
   { key: 'home', href: '#hero' },
   { key: 'about', href: '#about' },
   { key: 'products', href: '#product' },
-  { key: 'pricing', href: '#pricing' },
   { key: 'partners', href: '#partners' },
   { key: 'contact', href: '#contact' }
 ];
