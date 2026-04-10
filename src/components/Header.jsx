@@ -4,7 +4,7 @@ import { NAVIGATION } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
 import logo from '../assets/logos/logo.png';
 
-// Navigation icons configuration
+// Icons configuration
 const NAV_ICONS = {
   home: (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,196 +38,32 @@ const NAV_ICONS = {
   ),
 };
 
-// Mobile Menu Component
-const MobileMenu = ({ isOpen, onClose, activeSection, onNavigate }) => {
-  const menuRef = useRef(null);
-
-  // Close menu on escape key
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
-    }
-  }, [isOpen, onClose]);
-
-  // Prevent event propagation on menu click
-  const handleMenuClick = (e) => {
-    e.stopPropagation();
-  };
-
-  const mobileMenuVariants = {
-    closed: {
-      x: '100%',
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30,
-      },
-    },
-    open: {
-      x: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30,
-      },
-    },
-  };
-
-  const menuItemVariants = {
-    closed: {
-      x: 50,
-      opacity: 0,
-    },
-    open: (index) => ({
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.4,
-        delay: 0.1 + index * 0.05,
-      },
-    }),
-  };
-
+// Bottom Navigation Component
+const MobileBottomNav = ({ isVisible, activeSection, onNavigate }) => {
   return (
     <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 z-40 md:hidden"
-            onClick={onClose}
-          />
-
-          {/* Mobile Menu Panel */}
-          <motion.div
-            ref={menuRef}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={mobileMenuVariants}
-            className="md:hidden fixed top-0 right-0 bottom-0 w-[85vw] max-w-[320px] bg-white shadow-2xl z-50 overflow-y-auto overflow-x-hidden"
-            onClick={handleMenuClick}
-          >
-            {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between p-4 border-b border-heritage-100">
-              <span className="font-display font-bold text-heritage-900 text-lg">
-                Menu
-              </span>
+      {isVisible && (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          exit={{ y: 100 }}
+          className="md:hidden fixed bottom-0 left-0 right-0 z-[60] bg-white/80 backdrop-blur-lg border-t border-heritage-100 shadow-[0_-8px_20px_rgba(0,0,0,0.05)] px-4 pb-safe pt-2"
+        >
+          <div className="flex items-center justify-around h-16 max-w-md mx-auto">
+            {NAVIGATION.map((item) => (
               <button
-                onClick={onClose}
-                className="w-8 h-8 rounded-full bg-heritage-100 flex items-center justify-center text-heritage-600 hover:bg-heritage-200 transition-colors"
-                aria-label="Close menu"
+                key={item.href}
+                onClick={() => onNavigate(item.href)}
+                className={`flex flex-col items-center justify-center flex-1 transition-colors duration-300 ${activeSection === item.href ? 'text-warmth-600' : 'text-heritage-400'
+                  }`}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <span className="mb-1">{NAV_ICONS[item.key]}</span>
+                <span className="text-[10px] font-sans font-bold uppercase tracking-tighter">{item.key}</span>
               </button>
-            </div>
-
-            {/* Navigation Items */}
-            <div className="py-4 px-4 space-y-2">
-              {NAVIGATION.map((item, index) => (
-                <motion.button
-                  key={item.href}
-                  onClick={() => onNavigate(item.href)}
-                  custom={index}
-                  variants={menuItemVariants}
-                  className={`w-full flex items-center space-x-4 px-4 py-4 rounded-xl font-sans font-medium transition-all duration-300 ${activeSection === item.href
-                    ? 'bg-warmth-50 text-warmth-600 shadow-sm'
-                    : 'text-heritage-800 hover:bg-heritage-50 hover:text-warmth-600'
-                    }`}
-                >
-                  <span
-                    className={`transition-colors ${activeSection === item.href ? 'text-warmth-500' : 'text-heritage-400'
-                      }`}
-                  >
-                    {NAV_ICONS[item.key]}
-                  </span>
-                  <span>{item.key.charAt(0).toUpperCase() + item.key.slice(1)}</span>
-                  {activeSection === item.href && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="ml-auto w-2 h-2 bg-warmth-500 rounded-full"
-                    />
-                  )}
-                </motion.button>
-              ))}
-            </div>
-
-            {/* Divider */}
-            <div className="border-t border-heritage-100 my-4" />
-
-            {/* Language Toggle */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="px-4"
-            >
-              <div className="bg-heritage-50 rounded-2xl p-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
-                      <span className="text-xl">🇮🇩</span>
-                    </div>
-                    <div>
-                      <p className="font-sans font-semibold text-heritage-900">
-                        Bahasa Indonesia
-                      </p>
-                      <p className="text-xs text-heritage-500">
-                        Current language
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    className="px-4 py-2 bg-warmth-500 text-white rounded-xl font-sans font-semibold text-sm hover:bg-warmth-600 transition-all duration-300 shadow-md hover:shadow-lg active:scale-95"
-                  >
-                    Switch
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="px-4 pb-4 mt-4"
-            >
-              <button
-                onClick={() => onNavigate('#contact')}
-                className="w-full btn-primary py-4 text-lg shadow-warmth-500/30"
-              >
-                Contact Us
-              </button>
-            </motion.div>
-
-            {/* Brand Footer */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-heritage-50 to-transparent"
-            >
-              <div className="flex items-center justify-center space-x-2 text-heritage-400">
-                <span className="text-sm">by</span>
-                <span className="font-display font-semibold text-heritage-600">Jahe Padjajaran</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </>
+            ))}
+          </div>
+          <div className="h-[env(safe-area-inset-bottom)]" />
+        </motion.div>
       )}
     </AnimatePresence>
   );
@@ -235,23 +71,34 @@ const MobileMenu = ({ isOpen, onClose, activeSection, onNavigate }) => {
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#hero');
-  const { language, toggleLanguage, t, isIndonesian } = useLanguage();
+  const [isBottomNavVisible, setIsBottomNavVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const { toggleLanguage, t, isIndonesian } = useLanguage();
 
-  // Handle scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
 
-      // Update active section based on scroll position
-      const sections = NAVIGATION.map(item => item.href);
-      for (const href of sections.reverse()) {
-        const element = document.querySelector(href);
+      // Top Navbar mengecil jadi pil setelah scroll > 20px
+      setIsScrolled(currentScrollY > 20);
+
+      // Bottom Nav Smart Hide (Hanya bottom nav yang sembunyi)
+      if (currentScrollY < lastScrollY.current || currentScrollY < 10) {
+        setIsBottomNavVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsBottomNavVisible(false);
+      }
+      lastScrollY.current = currentScrollY;
+
+      // Update Active Section
+      const sections = [...NAVIGATION].reverse();
+      for (const item of sections) {
+        const element = document.querySelector(item.href);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= 100) {
-            setActiveSection(href);
+          if (rect.top <= 120) {
+            setActiveSection(item.href);
             break;
           }
         }
@@ -262,170 +109,108 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMobileMenuOpen]);
-
-  const closeMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen(false);
-  }, []);
-
   const scrollToSection = useCallback((href) => {
     const element = document.querySelector(href);
     if (element) {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       setActiveSection(href);
     }
   }, []);
 
   const handleNavigate = useCallback((href) => {
     scrollToSection(href);
-    closeMobileMenu();
-  }, [scrollToSection, closeMobileMenu]);
+  }, [scrollToSection]);
 
   return (
     <>
-      {/* Mobile Menu - rendered outside header for proper z-index */}
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={closeMobileMenu}
+      {/* Bottom Nav hanya sembunyi saat scroll ke bawah */}
+      <MobileBottomNav
+        isVisible={isBottomNavVisible}
         activeSection={activeSection}
         onNavigate={handleNavigate}
       />
 
+      {/* Top Header: Mengecil jadi pil di mobile, tidak pernah sembunyi */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isScrolled
+            ? 'top-4 mx-4 md:top-0 md:mx-0'
+            : 'top-0 mx-0'
           }`}
       >
-        <nav className="section-container">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <motion.button
-              onClick={() => scrollToSection('#hero')}
-              className="flex items-center space-x-3 group"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="w-40 md:w-60 overflow-hidden">
-                <img
-                  src={logo}
-                  alt="Jahe Padjajaran Logo"
-                  className="w-full"
-                />
-              </div>
-            </motion.button>
-
-            {/* Desktop Navigation */}
-            <motion.div
-              className="hidden md:flex items-center space-x-6"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              {NAVIGATION.map((item, index) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`font-sans font-medium transition-all duration-300 hover:text-warmth-600 relative group ${isScrolled || isMobileMenuOpen ? 'text-heritage-800' : 'text-white'
-                    }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {t(`nav.${item.key}`)}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-warmth-500 transition-all duration-300 group-hover:w-full ${activeSection === item.href ? 'w-full' : 'w-0'
-                      }`}
-                  />
-                </button>
-              ))}
-
-              {/* Language Toggle */}
+        <div
+          className={`transition-all duration-500 ${isScrolled
+              ? 'bg-white/95 backdrop-blur-md shadow-lg rounded-2xl md:rounded-none'
+              : 'bg-transparent'
+            }`}
+        >
+          <nav className="section-container">
+            <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'h-16 md:h-20' : 'h-20 md:h-24'
+              }`}>
+              {/* Logo */}
               <motion.button
-                onClick={toggleLanguage}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 border-2 ${isScrolled || isMobileMenuOpen
-                  ? 'border-heritage-200 text-heritage-800 hover:border-warmth-500'
-                  : 'border-white/30 text-white hover:border-warmth-300 hover:bg-white/10'
-                  }`}
-                initial={{ opacity: 0, x: 20 }}
+                onClick={() => scrollToSection('#hero')}
+                className="flex items-center"
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.5 }}
-                aria-label={t('language.switch')}
               >
-                <span className="text-lg">{isIndonesian ? '🇮🇩' : '🇺🇸'}</span>
-                <span className="font-sans font-bold text-sm">
-                  {isIndonesian ? 'EN' : 'ID'}
-                </span>
+                <div className={`transition-all duration-500 ${isScrolled ? 'w-32 md:w-52' : 'w-40 md:w-60'}`}>
+                  <img src={logo} alt="Logo" className="w-full h-auto" />
+                </div>
               </motion.button>
 
-              <button
-                onClick={() => scrollToSection('#contact')}
-                className="btn-primary"
+              {/* Desktop Navigation */}
+              <motion.div
+                className="hidden md:flex items-center space-x-6"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
               >
-                {t('nav.contactUs')}
-              </button>
-            </motion.div>
+                {NAVIGATION.map((item) => (
+                  <button
+                    key={item.href}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`font-sans font-medium transition-all duration-300 hover:text-warmth-600 relative group ${isScrolled ? 'text-heritage-800' : 'text-white'
+                      }`}
+                  >
+                    {t(`nav.${item.key}`)}
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-warmth-500 transition-all duration-300 group-hover:w-full ${activeSection === item.href ? 'w-full' : 'w-0'}`} />
+                  </button>
+                ))}
 
-            {/* Mobile Menu Button */}
-            <motion.button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden relative w-10 h-10 rounded-lg transition-colors flex items-center justify-center ${isScrolled || isMobileMenuOpen
-                ? 'text-heritage-900 hover:bg-heritage-100'
-                : 'text-white hover:bg-white/10'
-                }`}
-              aria-label="Toggle menu"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="sr-only">Toggle menu</span>
-              <div className="relative w-6 h-6">
-                <motion.span
-                  className="absolute top-0 left-0 w-full h-0.5 bg-current rounded-full"
-                  animate={{
-                    rotate: isMobileMenuOpen ? 45 : 0,
-                    y: isMobileMenuOpen ? 10 : 0,
-                  }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.span
-                  className="absolute top-1/2 left-0 w-full h-0.5 bg-current rounded-full"
-                  animate={{ opacity: isMobileMenuOpen ? 0 : 1 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.span
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-current rounded-full"
-                  animate={{
-                    rotate: isMobileMenuOpen ? -45 : 0,
-                    y: isMobileMenuOpen ? -10 : 0,
-                  }}
-                  transition={{ duration: 0.2 }}
-                />
+                {/* Desktop Language Toggle: Text Only */}
+                <button
+                  onClick={toggleLanguage}
+                  className={`font-sans font-bold text-sm transition-all duration-300 border-2 px-3 py-1.5 rounded-lg ${isScrolled ? 'border-heritage-200 text-heritage-800' : 'border-white/30 text-white'
+                    }`}
+                >
+                  {isIndonesian ? 'EN' : 'ID'}
+                </button>
+
+                <button onClick={() => scrollToSection('#contact')} className="btn-primary">
+                  {t('nav.contactUs')}
+                </button>
+              </motion.div>
+
+              {/* Mobile Right Action: Text Only Toggle */}
+              <div className="md:hidden flex items-center space-x-2">
+                <button
+                  onClick={toggleLanguage}
+                  className={`px-3 py-1.5 rounded-xl font-sans font-bold text-xs transition-all duration-300 ${isScrolled
+                      ? 'text-heritage-900 bg-heritage-50 border border-heritage-100'
+                      : 'text-white bg-white/10 border border-white/20'
+                    }`}
+                >
+                  {isIndonesian ? 'EN' : 'ID'}
+                </button>
               </div>
-            </motion.button>
-          </div>
-        </nav>
+            </div>
+          </nav>
+        </div>
       </header>
     </>
   );
 };
 
 export default Header;
-
