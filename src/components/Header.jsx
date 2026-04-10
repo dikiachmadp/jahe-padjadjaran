@@ -23,81 +23,71 @@ const NAV_ICONS = {
   contact: <HiOutlineMail size={22} />,
 };
 
-const MobileBottomNav = ({ isVisible, activeSection, onNavigate }) => {
+const MobileBottomNav = ({ activeSection, onNavigate, isAtBottom }) => {
   const { t } = useLanguage();
+  const isFullWidth = isAtBottom;
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ y: 120, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 120, opacity: 0 }}
-          transition={{ type: "spring", damping: 25, stiffness: 200 }}
-          className="md:hidden fixed bottom-0 left-0 right-0 z-[70] px-4 pb-[env(safe-area-inset-bottom,1.5rem)] pt-2"
-        >
-          {/* Glassmorphism Wrapper */}
-          <div className="bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-2 py-2 flex items-center justify-around relative overflow-hidden">
-            <LayoutGroup id="nav-indicator">
-              {NAVIGATION.map((item) => {
-                const isActive = activeSection === item.href;
+    <div
+      className={`md:hidden fixed bottom-0 left-0 right-0 z-[70] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${isFullWidth ? 'px-0 pb-0' : 'px-4 pb-6'
+        }`}
+    >
+      <div className={`flex items-center justify-around relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${isFullWidth
+          ? 'bg-transparent shadow-none border-none rounded-none px-0 py-4 pb-[env(safe-area-inset-bottom,1rem)]'
+          : 'bg-white/85 backdrop-blur-xl border-t border-x border-b border-white/20 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-2 py-2'
+        }`}>
+        <LayoutGroup id="nav-indicator-mobile">
+          {NAVIGATION.map((item) => {
+            const isActive = activeSection === item.href;
 
-                return (
-                  <button
-                    key={item.href}
-                    onClick={() => onNavigate(item.href)}
-                    className="relative flex flex-col items-center justify-center flex-1 py-2 outline-none tap-highlight-transparent"
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="active-pill"
-                        className="absolute inset-0 bg-warmth-600/10 rounded-2xl"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
+            return (
+              <button
+                key={item.href}
+                onClick={() => onNavigate(item.href)}
+                className="relative flex flex-col items-center justify-center flex-1 py-1 outline-none tap-highlight-transparent"
+              >
+                {/* Active Indicator: Menjadi sedikit lebih tegas saat background transparan di footer */}
+                {isActive && (
+                  <motion.div
+                    layoutId="active-pill-mobile"
+                    className={`absolute inset-0 rounded-2xl mx-1 ${isFullWidth ? 'bg-warmth-600/20 scale-110' : 'bg-warmth-600/10'
+                      }`}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
 
-                    <motion.span
-                      animate={{
-                        y: isActive ? -4 : 0,
-                        scale: isActive ? 1.1 : 1,
-                      }}
-                      className={`relative z-10 transition-colors duration-300 ${isActive ? 'text-warmth-800' : 'text-zinc-500'}`}
-                    >
-                      {NAV_ICONS[item.key]}
-                    </motion.span>
+                <motion.span
+                  animate={{
+                    y: isActive ? -2 : 0,
+                    scale: isFullWidth && isActive ? 1.15 : 1
+                  }}
+                  className={`relative z-10 transition-colors duration-300 ${isActive ? 'text-warmth-800' : 'text-zinc-500'
+                    }`}
+                >
+                  {NAV_ICONS[item.key]}
+                </motion.span>
 
-                    <span className={`text-[9px] mt-1 font-sans font-black uppercase tracking-tighter transition-all duration-300 ${isActive ? 'text-warmth-800 opacity-100 scale-100' : 'text-zinc-400 opacity-0 scale-75 h-0'}`}>
-                      {t(`nav.${item.key}`)}
-                    </span>
-
-                    {isActive && (
-                      <motion.div
-                        layoutId="dot"
-                        className="w-1 h-1 bg-warmth-600 rounded-full mt-0.5"
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </LayoutGroup>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+                <span className={`text-[9px] mt-1 font-sans font-black uppercase tracking-tighter transition-all duration-300 ${isActive ? 'text-warmth-800 opacity-100' : 'opacity-0 h-0'
+                  }`}>
+                  {t(`nav.${item.key}`)}
+                </span>
+              </button>
+            );
+          })}
+        </LayoutGroup>
+      </div>
+    </div>
   );
 };
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
   const [activeSection, setActiveSection] = useState('#hero');
-  const [isBottomNavVisible, setIsBottomNavVisible] = useState(true);
-  const lastScrollY = useRef(0);
   const { toggleLanguage, t, isIndonesian } = useLanguage();
 
   const triggerHaptic = useCallback(() => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate(12);
-    }
+    if ('vibrate' in navigator) navigator.vibrate(12);
   }, []);
 
   const scrollToSection = useCallback((href) => {
@@ -119,19 +109,10 @@ const Header = () => {
 
       setIsScrolled(currentScrollY > 20);
 
-      const isAtBottom = currentScrollY + windowHeight >= documentHeight - 40;
-      const isAtTop = currentScrollY < 50;
-      const isScrollingUp = currentScrollY < lastScrollY.current;
+      // Deteksi mentok bawah
+      const atBottom = currentScrollY + windowHeight >= documentHeight - 10;
+      setIsAtBottom(atBottom);
 
-      if (isAtTop || isAtBottom || isScrollingUp) {
-        setIsBottomNavVisible(true);
-      } else if (currentScrollY > 150) {
-        setIsBottomNavVisible(false);
-      }
-
-      lastScrollY.current = currentScrollY;
-
-      // Active Section Tracking
       const sections = [...NAVIGATION].reverse();
       for (const item of sections) {
         const element = document.querySelector(item.href);
@@ -152,9 +133,9 @@ const Header = () => {
   return (
     <>
       <MobileBottomNav
-        isVisible={isBottomNavVisible}
         activeSection={activeSection}
         onNavigate={scrollToSection}
+        isAtBottom={isAtBottom}
       />
 
       <header
@@ -162,7 +143,7 @@ const Header = () => {
           }`}
       >
         <div
-          className={`transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg rounded-2xl md:rounded-none' : 'bg-transparent'
+          className={`transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg rounded-2xl md:rounded-none border border-white/20' : 'bg-transparent'
             }`}
         >
           <nav className="max-w-7xl mx-auto px-6">
@@ -174,7 +155,6 @@ const Header = () => {
                 </div>
               </button>
 
-              {/* Desktop Menu */}
               <div className="hidden md:flex items-center space-x-8">
                 {NAVIGATION.map((item) => (
                   <button
@@ -200,7 +180,6 @@ const Header = () => {
                 </button>
               </div>
 
-              {/* Mobile Language Toggle */}
               <div className="md:hidden flex items-center">
                 <button
                   onClick={toggleLanguage}

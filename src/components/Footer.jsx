@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     // pb-32 memberikan ruang aman jika navbar mobile belum sempat menghilang
-    <footer className="bg-heritage-900 text-white pt-16 pb-32 md:pb-8 overflow-hidden">
+    <footer className="bg-heritage-900 text-white pt-16 pb-24 md:pb-8 overflow-hidden">
       <div className="section-container">
         <div className="flex flex-col md:flex-row md:justify-between items-start gap-10 mb-12">
 
