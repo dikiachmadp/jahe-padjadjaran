@@ -3,10 +3,11 @@ export const translations = {
         // Navigation
         nav: {
             home: 'Beranda',
-            about: 'Tentang Kami',
+            about: 'Tentang',
             products: 'Produk',
             pricing: 'Harga',
             partners: 'Mitra',
+            gallery: 'Galeri',
             contact: 'Kontak',
             contactUs: 'Hubungi Kami',
         },
@@ -24,7 +25,7 @@ export const translations = {
                 partners: 'Mitra Distribusi',
             },
             productShowcase: 'Jahe Berkualitas',
-            processedWithCare: 'Processed with Care',
+            processedWithCare: 'Diproses dengan Care',
         },
         // About Section
         about: {
@@ -92,7 +93,7 @@ export const translations = {
             },
             showcase: {
                 title: 'Toples Praktis',
-                subtitle: 'butir per toples',
+                subtitle: '{{pieces}} butir per toples',
             },
         },
         // Pricing Section
@@ -129,11 +130,11 @@ export const translations = {
                 title: 'Rincian Harga Per Unit',
                 basePrice: {
                     label: 'Harga Dasar per Toples',
-                    calc: '({pieces} butir × Rp {price})'
+                    calc: '({{pieces}} butir × Rp {{price}})'
                 },
                 partnerPrice: {
                     label: 'Harga Beli Mitra per Karton',
-                    calc: '({jars} toples)'
+                    calc: '({{jars}} toples)'
                 },
                 retailPrice: {
                     label: 'Harga Jual ke Konsumen',
@@ -141,11 +142,18 @@ export const translations = {
                 },
                 totalProfit: {
                     label: 'Total Keuntungan per Karton',
-                    calc: '(Rp {profit} × {jars} toples)'
+                    calc: '(Rp {{profit}} × {{jars}} toples)'
                 },
                 paymentNote: 'Skema pembayaran mengikuti ketentuan yang berlaku dari manajemen mitra',
             },
             cta: 'Ajukan Kemitraan Sekarang',
+        },
+        // Gallery Section
+        gallery: {
+            badge: 'Galeri Produk',
+            title: 'Galeri Produk',
+            subtitle: 'Kualitas Premium',
+            description: 'Jelajahi produk permen jahe berkualitas tinggi kami dalam berbagai presentasi kemasan.',
         },
         // Partners Section
         partners: {
@@ -159,7 +167,7 @@ export const translations = {
                 coverage: 'Wilayah Coverage',
             },
             active: 'Aktif',
-            since: 'Sejak {year}',
+            since: 'Sejak {{year}}',
             benefits: {
                 title: 'Mengapa Bermitra dengan Kami?',
                 subtitle: 'Kami berkomitmen membangun ekosistem bisnis yang saling menguntungkan dan berkelanjutan',
@@ -239,7 +247,7 @@ export const translations = {
             contactInfo: 'Kontak',
             bottom: {
                 rights: 'All rights reserved.',
-                legal: 'NIB: {nib} | NPWP: {npwp}',
+                legal: 'NIB: {{nib}} | NPWP: {{npwp}}',
             },
         },
         // Language
@@ -252,10 +260,11 @@ export const translations = {
         // Navigation
         nav: {
             home: 'Home',
-            about: 'About Us',
+            about: 'About',
             products: 'Products',
             pricing: 'Pricing',
             partners: 'Partners',
+            gallery: 'Gallery',
             contact: 'Contact',
             contactUs: 'Contact Us',
         },
@@ -272,14 +281,14 @@ export const translations = {
                 since: 'Since',
                 partners: 'Distribution Partners',
             },
-            productShowcase: 'Quality Ginger',
+            productShowcase: 'Premium Ginger',
             processedWithCare: 'Processed with Care',
         },
         // About Section
         about: {
             badge: 'About Us',
             title: 'PT Padjajaran Pratama Wijaya',
-            subtitle: 'We are a company committed to delivering high-quality spice products to support the health and comfort of Indonesian people.',
+            subtitle: 'We are a company committed to delivering high-quality spice products to support the health and comfort of the Indonesian people.',
             features: [
                 {
                     icon: '🏢',
@@ -303,7 +312,7 @@ export const translations = {
                 }
             ],
             legal: {
-                title: 'Company Legalization',
+                title: 'Company Legality',
                 registrationNumber: 'Registration Number',
                 nib: 'NIB',
                 npwp: 'NPWP',
@@ -322,7 +331,7 @@ export const translations = {
         // Product Section
         product: {
             badge: 'Featured Products',
-            title: 'Jahe Padjajaran Candy',
+            title: 'Padjajaran Ginger Candy',
             description: 'Spice-based candy made from high-quality natural ingredients',
             benefits: [
                 'Warms the body',
@@ -341,7 +350,7 @@ export const translations = {
             },
             showcase: {
                 title: 'Practical Jar',
-                subtitle: 'pieces per jar',
+                subtitle: '{{pieces}} pieces per jar',
             },
         },
         // Pricing Section
@@ -378,11 +387,11 @@ export const translations = {
                 title: 'Unit Price Breakdown',
                 basePrice: {
                     label: 'Base Price per Jar',
-                    calc: '({pieces} pieces × Rp {price})'
+                    calc: '({{pieces}} pieces × Rp {{price}})'
                 },
                 partnerPrice: {
                     label: 'Partner Purchase Price per Carton',
-                    calc: '({jars} jars)'
+                    calc: '({{jars}} jars)'
                 },
                 retailPrice: {
                     label: 'Selling Price to Consumer',
@@ -390,11 +399,18 @@ export const translations = {
                 },
                 totalProfit: {
                     label: 'Total Profit per Carton',
-                    calc: '(Rp {profit} × {jars} jars)'
+                    calc: '(Rp {{profit}} × {{jars}} jars)'
                 },
                 paymentNote: 'Payment scheme follows applicable management terms',
             },
             cta: 'Apply for Partnership Now',
+        },
+        // Gallery Section
+        gallery: {
+            badge: 'Product Gallery',
+            title: 'Product Gallery',
+            subtitle: 'Premium Quality',
+            description: 'Explore our high-quality ginger candy products in various packaging presentations.',
         },
         // Partners Section
         partners: {
@@ -408,7 +424,7 @@ export const translations = {
                 coverage: 'Coverage Areas',
             },
             active: 'Active',
-            since: 'Since {year}',
+            since: 'Since {{year}}',
             benefits: {
                 title: 'Why Partner With Us?',
                 subtitle: 'We are committed to building a mutually beneficial and sustainable business ecosystem',
@@ -488,12 +504,12 @@ export const translations = {
             contactInfo: 'Contact',
             bottom: {
                 rights: 'All rights reserved.',
-                legal: 'NIB: {nib} | NPWP: {npwp}',
+                legal: 'NIB: {{nib}} | Tax ID: {{npwp}}',
             },
         },
         // Language
         language: {
-            switch: 'Bahasa',
+            switch: 'Bahasa Indonesia',
             current: 'EN',
         }
     }
@@ -503,4 +519,3 @@ export const languages = [
     { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
     { code: 'en', name: 'English', flag: '🇺🇸' }
 ];
-

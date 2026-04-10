@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About Us",
+    "about": "About",
     "products": "Products",
     "partners": "Partners",
     "gallery": "Gallery",
@@ -9,51 +9,51 @@
     "contactUs": "Contact Us"
   },
   "hero": {
-    "badge": "Quality Local Product",
+    "badge": "High-Quality Local Product",
     "title": "Ginger Candy",
     "subtitle": "Padjajaran",
-    "description": "The warmth of Nusantara spices in every piece. Natural ginger-based candy that boosts immunity and provides throat comfort.",
+    "description": "The warmth of Indonesian spices in every piece. Natural ginger-based candy that boosts immunity and provides soothing comfort for your throat.",
     "viewProducts": "View Products",
     "becomePartner": "Become a Partner",
     "stats": {
       "natural": "Natural Ingredients",
-      "since": "Since",
+      "since": "Established",
       "partners": "Distribution Partners"
     },
-    "productShowcase": "Quality Ginger",
+    "productShowcase": "Premium Ginger",
     "processedWithCare": "Processed with Care"
   },
   "about": {
     "badge": "About Us",
     "title": "PT Padjajaran Pratama Wijaya",
-    "subtitle": "We are a company committed to delivering high-quality spice products to support the health and comfort of Indonesian people.",
+    "subtitle": "We are a company committed to delivering high-quality spice products to support the health and well-being of the Indonesian community.",
     "features": [
       {
         "icon": "🏢",
         "title": "Registered Company",
-        "description": "Officially incorporated with complete legal permits from the Ministry of Law and Human Rights"
+        "description": "An officially incorporated legal entity with full legality from the Ministry of Law and Human Rights."
       },
       {
         "icon": "🌿",
         "title": "Quality Ingredients",
-        "description": "Using the finest spices processed hygienically"
+        "description": "Using only the finest selected spices processed with hygiene as a priority."
       },
       {
         "icon": "🎯",
         "title": "Local Vision",
-        "description": "Supporting Nusantara products to compete in national markets"
+        "description": "Supporting authentic Indonesian products to compete in the national market."
       },
       {
         "icon": "🤝",
         "title": "Solid Partnership",
-        "description": "Partnering with trusted distributors in Greater Jakarta and West Java"
+        "description": "Partnering with trusted distributors across Jabodetabek and West Java."
       }
     ],
     "legal": {
-      "title": "Company Legalization",
+      "title": "Company Legality",
       "registrationNumber": "Registration Number",
-      "nib": "NIB",
-      "npwp": "NPWP",
+      "nib": "NIB (Business ID)",
+      "npwp": "Tax ID (NPWP)",
       "kbliCode": "KBLI Code",
       "businessActivity": "Business Activity"
     },
@@ -67,26 +67,26 @@
     }
   },
   "product": {
-    "badge": "Featured Products",
-    "title": "Jahe Padjajaran Candy",
-    "description": "Spice-based candy made from high-quality natural ingredients",
+    "badge": "Featured Product",
+    "title": "Padjajaran Ginger Candy",
+    "description": "Spice-based candy crafted from high-quality natural ingredients.",
     "benefits": [
       "Warms the body",
-      "Boosts immune system",
+      "Maintains immune system",
       "Provides throat comfort",
       "Healthy alternative for daily consumption"
     ],
     "benefitsTitle": "Health Benefits",
-    "featuresTitle": "Product Features",
+    "featuresTitle": "Product Excellence",
     "features": [
-      "Made from natural high-quality ingredients",
-      "Processed hygienically",
+      "Made from premium natural ingredients",
+      "Hygienically processed",
       "Modern and practical packaging",
-      "Distinctive Nusantara ginger flavor"
+      "Authentic Indonesian ginger flavor"
     ],
     "packaging": {
       "title": "Packaging Specifications",
-      "subtitle": "Packaged practically for easy distribution and sales",
+      "subtitle": "Practically packaged to facilitate distribution and sales.",
       "perJar": "Per Jar",
       "perCarton": "Per Carton",
       "perPiece": "Per Piece"
@@ -99,14 +99,14 @@
   "pricing": {
     "badge": "Partnership Offer",
     "title": "Partner Pricing Scheme",
-    "subtitle": "We offer profitable partnership schemes with flexible payment systems according to management terms",
+    "subtitle": "We offer profitable partnership schemes with flexible payment systems according to management policy.",
     "partnerPrice": {
       "title": "Partner Price",
       "perCarton": "per carton",
       "features": [
         "Flexible payment system",
-        "Promotional support",
-        "Guaranteed quality products"
+        "Marketing support",
+        "Guaranteed product quality"
       ]
     },
     "retailPrice": {
@@ -115,7 +115,7 @@
       "label": "RECOMMENDED",
       "features": [
         "Competitive pricing",
-        "Clear profit margin",
+        "Clear profit margins",
         "Easy to resell"
       ]
     },
@@ -134,60 +134,60 @@
         "label": "Partner Purchase Price per Carton"
       },
       "retailPrice": {
-        "label": "Selling Price to Consumer"
+        "label": "Consumer Selling Price"
       },
       "totalProfit": {
         "label": "Total Profit per Carton"
       },
-      "paymentNote": "Payment scheme follows applicable management terms"
+      "paymentNote": "Payment schemes follow the prevailing terms and conditions from partner management."
     },
     "cta": "Apply for Partnership Now"
   },
   "partners": {
     "badge": "Distribution Partners",
     "title": "Trusted by Selected Partners",
-    "subtitle": "We have established distribution partnerships with various trusted companies and stores in Greater Jakarta and West Java regions",
+    "subtitle": "We have established distribution partnerships with various trusted companies and stores across Jabodetabek and West Java.",
     "stats": {
       "active": "Active Partners",
       "since": "Since",
       "satisfaction": "Partner Satisfaction",
-      "coverage": "Coverage Areas"
+      "coverage": "Coverage Area"
     },
     "active": "Active",
     "since": "Since {{year}}",
     "benefits": {
       "title": "Why Partner With Us?",
-      "subtitle": "We are committed to building a mutually beneficial and sustainable business ecosystem",
+      "subtitle": "We are committed to building a mutually beneficial and sustainable business ecosystem.",
       "list": [
         {
           "icon": "🎯",
-          "title": "Quality Products",
-          "description": "Products with high quality standards and complete legalization"
+          "title": "Quality Product",
+          "description": "Products with high-quality standards and full legality."
         },
         {
           "icon": "💼",
           "title": "Full Support",
-          "description": "Our team is ready to support partner success in sales"
+          "description": "Our team is ready to support partners' success in sales."
         },
         {
           "icon": "📈",
           "title": "Competitive Margins",
-          "description": "Attractive profits with competitive market pricing"
+          "description": "Attractive profits with competitive market pricing."
         },
         {
           "icon": "🚚",
           "title": "Easy Distribution",
-          "description": "Efficient and timely distribution system"
+          "description": "Efficient and timely distribution system."
         },
         {
           "icon": "🤝",
           "title": "Long-term Partnership",
-          "description": "Building sustainable business relationships"
+          "description": "Building sustainable business relationships."
         },
         {
           "icon": "📊",
-          "title": "Large Market Potential",
-          "description": "Products with high demand in the natural health segment"
+          "title": "High Market Potential",
+          "description": "Products with high demand in the natural health segment."
         }
       ]
     },
@@ -195,8 +195,8 @@
   },
   "contact": {
     "badge": "Contact Us",
-    "title": "Partner With Us",
-    "subtitle": "We are open to partnership and distribution opportunities. Contact us for more information about products and cooperation schemes",
+    "title": "Let's Partner Together",
+    "subtitle": "We are open to partnership and distribution opportunities. Contact us for more information about products and cooperation schemes.",
     "contactInfo": "Contact Information",
     "methods": {
       "phone": "Phone",
@@ -207,42 +207,42 @@
     "address": "Office Address",
     "cta": {
       "title": "Interested in Partnering?",
-      "description": "Join our distribution network and grow your business with high-quality products in demand",
+      "description": "Join our distribution network and grow your business with high-quality products in high market demand.",
       "benefits": [
-        "Easy partnership process",
+        "Simple partnership process",
         "Full support from our team",
         "Competitive profit margins",
-        "Products with complete legalization"
+        "Products with full legality"
       ],
       "whatsapp": "Contact via WhatsApp",
       "email": "Or send us an email"
     },
     "socialProof": {
-      "text": "Trusted by leading distribution partners in Greater Jakarta and West Java",
+      "text": "Trusted by leading distribution partners in Jabodetabek and West Java.",
       "items": [
-        "Complete Legalization",
+        "Full Legality",
         "Quality Products",
         "Trusted Since 2021"
       ]
     }
   },
   "footer": {
-    "description": "Natural ginger-based spice products that warm the body and boost immunity. Produced hygienically with complete legalization.",
-    "quickLinks": "Quick Links",
+    "description": "Natural ginger-based spice products that warm the body and maintain immunity. Hygienically produced with full legality.",
+    "quickLinks": "Navigation",
     "contactInfo": "Contact",
     "bottom": {
       "rights": "All rights reserved.",
-      "legal": "NIB: {{nib}} | NPWP: {{npwp}}"
+      "legal": "NIB: {{nib}} | Tax ID: {{npwp}}"
     }
   },
   "language": {
-    "switch": "Bahasa",
+    "switch": "Bahasa Indonesia",
     "current": "EN"
   },
   "gallery": {
-    "badge": "Gallery",
+    "badge": "Product Gallery",
     "title": "Product Gallery",
     "subtitle": "Premium Quality",
-    "description": "Explore our premium ginger candy products in various presentations and packaging options."
+    "description": "Explore our high-quality ginger candy products in various packaging presentations."
   }
 }
