@@ -2,12 +2,31 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { COMPANY_INFO } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
+// Import Icon yang dibutuhkan
+import {
+  Building2,
+  Leaf,
+  Target,
+  Handshake,
+  CheckCircle2
+} from 'lucide-react';
 
 const About = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
   const { t } = useLanguage();
 
-  // Get translated features array using returnObjects option
+  /**
+   * Jika di file translasi icon disimpan sebagai string (misal: 'Building2'), 
+   * kita butuh mapping. Tapi cara terbaik adalah mengirim objek komponen 
+   * langsung jika memungkinkan, atau menggunakan mapping seperti di bawah:
+   */
+  const iconMap = {
+    '🏢': Building2,
+    '🌿': Leaf,
+    '🎯': Target,
+    '🤝': Handshake,
+  };
+
   const features = t('about.features', { returnObjects: true }) || [];
 
   return (
@@ -33,23 +52,35 @@ const About = () => {
 
         {/* Features Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-12 md:mb-16">
-          {Array.isArray(features) && features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="card-elevated p-4 md:p-8 text-center"
-            >
-              <div className="text-3xl md:text-5xl mb-3 md:mb-4">{feature.icon}</div>
-              <h3 className="text-base md:text-xl font-display font-bold text-heritage-900 mb-2 md:mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-sm md:text-base text-heritage-600 font-body leading-relaxed">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+          {Array.isArray(features) && features.map((feature, index) => {
+            // Logika pemilihan icon: gunakan mapping jika icon masih berupa emoji/string
+            const IconComponent = iconMap[feature.icon] || feature.icon;
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="card-elevated p-4 md:p-8 text-center flex flex-col items-center"
+              >
+                <div className="mb-3 md:mb-6 text-warmth-600 bg-warmth-50 p-3 rounded-2xl">
+                  {/* Cek apakah IconComponent adalah fungsi/komponen valid */}
+                  {typeof IconComponent === 'function' || typeof IconComponent === 'object' ? (
+                    <IconComponent size={40} strokeWidth={1.5} className="md:w-12 md:h-12 w-8 h-8" />
+                  ) : (
+                    <span className="text-3xl">{feature.icon}</span>
+                  )}
+                </div>
+                <h3 className="text-base md:text-xl font-display font-bold text-heritage-900 mb-2 md:mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-sm md:text-base text-heritage-600 font-body leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Company Details */}
@@ -65,53 +96,28 @@ const About = () => {
                 {t('about.legal.title')}
               </h3>
               <div className="space-y-3 md:space-y-4 font-body">
-                <div className="flex items-start space-x-2 md:space-x-3">
-                  <div className="w-5 h-5 md:w-6 md:h-6 bg-warmth-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 md:mt-1">
-                    <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                {/* Me-replace SVG mentah dengan CheckCircle2 dari Lucide */}
+                {[
+                  { label: t('about.legal.registrationNumber'), value: COMPANY_INFO.legal.registrationNumber },
+                  { label: t('about.legal.nib'), value: COMPANY_INFO.legal.nib },
+                  { label: t('about.legal.npwp'), value: COMPANY_INFO.legal.npwp, breakAll: true },
+                  {
+                    label: t('about.legal.kbliCode'),
+                    value: `${COMPANY_INFO.legal.kbliCode} - ${t('about.legal.businessActivity')}`
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start space-x-3 md:space-x-4">
+                    <div className="flex-shrink-0 mt-1">
+                      <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-warmth-400" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-warmth-100 text-sm md:text-base">{item.label}</div>
+                      <div className={`text-warmth-200 text-sm md:text-base ${item.breakAll ? 'break-all' : ''}`}>
+                        {item.value}
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-semibold text-warmth-100 text-sm md:text-base">{t('about.legal.registrationNumber')}</div>
-                    <div className="text-warmth-200 text-sm md:text-base break-all">{COMPANY_INFO.legal.registrationNumber}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-2 md:space-x-3">
-                  <div className="w-5 h-5 md:w-6 md:h-6 bg-warmth-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 md:mt-1">
-                    <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-warmth-100 text-sm md:text-base">{t('about.legal.nib')}</div>
-                    <div className="text-warmth-200 text-sm md:text-base">{COMPANY_INFO.legal.nib}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-2 md:space-x-3">
-                  <div className="w-5 h-5 md:w-6 md:h-6 bg-warmth-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 md:mt-1">
-                    <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-warmth-100 text-sm md:text-base">{t('about.legal.npwp')}</div>
-                    <div className="text-warmth-200 text-sm md:text-base break-all">{COMPANY_INFO.legal.npwp}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-2 md:space-x-3">
-                  <div className="w-5 h-5 md:w-6 md:h-6 bg-warmth-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 md:mt-1">
-                    <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-warmth-100 text-sm md:text-base">{t('about.legal.kbliCode')}</div>
-                    <div className="text-warmth-200 text-sm md:text-base">{COMPANY_INFO.legal.kbliCode} - {t('about.legal.businessActivity')}</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -120,28 +126,20 @@ const About = () => {
                 {t('about.business.title')}
               </h3>
               <div className="space-y-3 md:space-y-4 font-body">
-                <div className="p-3 md:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                  <div className="text-sm text-warmth-200 mb-1">{t('about.business.scale')}</div>
-                  <div className="font-semibold text-sm md:text-base">{COMPANY_INFO.legal.businessScale}</div>
-                </div>
-
-                <div className="p-3 md:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                  <div className="text-sm text-warmth-200 mb-1">{t('about.business.investment')}</div>
-                  <div className="font-semibold text-sm md:text-base">{COMPANY_INFO.legal.investmentType}</div>
-                </div>
-
-                <div className="p-3 md:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                  <div className="text-sm text-warmth-200 mb-1">{t('about.business.risk')}</div>
-                  <div className="font-semibold flex items-center text-sm md:text-base">
-                    <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
-                    {COMPANY_INFO.legal.riskLevel}
+                {[
+                  { label: t('about.business.scale'), value: COMPANY_INFO.legal.businessScale },
+                  { label: t('about.business.investment'), value: COMPANY_INFO.legal.investmentType },
+                  { label: t('about.business.risk'), value: COMPANY_INFO.legal.riskLevel, isRisk: true },
+                  { label: t('about.business.registrationDate'), value: COMPANY_INFO.legal.registrationDate },
+                ].map((item, i) => (
+                  <div key={i} className="p-3 md:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+                    <div className="text-sm text-warmth-200 mb-1">{item.label}</div>
+                    <div className="font-semibold text-sm md:text-base flex items-center">
+                      {item.isRisk && <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>}
+                      {item.value}
+                    </div>
                   </div>
-                </div>
-
-                <div className="p-3 md:p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                  <div className="text-sm text-warmth-200 mb-1">{t('about.business.registrationDate')}</div>
-                  <div className="font-semibold text-sm md:text-base">{COMPANY_INFO.legal.registrationDate}</div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

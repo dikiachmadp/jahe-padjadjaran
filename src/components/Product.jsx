@@ -2,6 +2,17 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { PRODUCT_INFO } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
+// Import Icon Lucide
+import {
+  Check,
+  Leaf,
+  Sparkles,
+  Package,
+  Globe,
+  Container,
+  Boxes,
+  Tag
+} from 'lucide-react';
 
 const Product = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
@@ -10,6 +21,14 @@ const Product = () => {
   // Get translated arrays using returnObjects option
   const benefits = t('product.benefits', { returnObjects: true }) || [];
   const features = t('product.features', { returnObjects: true }) || [];
+
+  // Mapping untuk Features Icons
+  const featureIcons = [
+    <Leaf className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+    <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+    <Package className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+    <Globe className="w-6 h-6 md:w-8 md:h-8 text-white" />
+  ];
 
   return (
     <section id="product" className="py-16 md:py-20 bg-white overflow-x-hidden">
@@ -41,13 +60,15 @@ const Product = () => {
             className="relative order-2 lg:order-1"
           >
             <div className="relative bg-gradient-to-br from-warmth-100 to-warmth-50 rounded-2xl md:rounded-3xl p-8 md:p-12 shadow-xl">
-              {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-24 md:w-32 h-24 md:h-32 bg-warmth-200 rounded-full blur-2xl md:blur-3xl opacity-40"></div>
               <div className="absolute bottom-0 left-0 w-32 md:w-40 h-32 md:h-40 bg-heritage-200 rounded-full blur-2xl md:blur-3xl opacity-40"></div>
 
               <div className="relative z-10 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-7xl md:text-9xl mb-4 md:mb-6">🫙</div>
+                  {/* Ganti Emoji Jar dengan Icon Container */}
+                  <div className="flex justify-center mb-6 md:mb-8 text-warmth-600 drop-shadow-lg">
+                    <Container size={100} strokeWidth={1} className="md:w-32 md:h-32 w-24 h-24" />
+                  </div>
                   <div className="bg-white/80 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg">
                     <div className="text-xl md:text-3xl font-display font-bold text-heritage-900 mb-2">
                       {t('product.showcase.title')}
@@ -84,13 +105,11 @@ const Product = () => {
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="flex items-start space-x-4 p-4 bg-warmth-50 rounded-xl hover:bg-warmth-100 transition-colors duration-300"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-full flex items-center justify-center shadow-lg">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                  <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-full flex items-center justify-center shadow-md">
+                    <Check className="w-4 h-4 md:w-5 md:h-5 text-white" strokeWidth={3} />
                   </div>
                   <div className="flex-1">
-                    <p className="text-lg font-body text-heritage-800">
+                    <p className="text-base md:text-lg font-body text-heritage-800">
                       {typeof benefit === 'string' ? benefit : ''}
                     </p>
                   </div>
@@ -119,9 +138,7 @@ const Product = () => {
                 className="card-elevated p-4 md:p-6 text-center group"
               >
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-warmth-400 to-warmth-600 rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-3 md:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 gpu-accelerated">
-                  <span className="text-2xl md:text-3xl">
-                    {index === 0 ? '🌱' : index === 1 ? '✨' : index === 2 ? '📦' : '🇮🇩'}
-                  </span>
+                  {featureIcons[index]}
                 </div>
                 <p className="text-sm md:text-base text-heritage-800 font-body leading-relaxed">
                   {typeof feature === 'string' ? feature : ''}
@@ -138,7 +155,7 @@ const Product = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-12 md:mt-16 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-2xl md:rounded-3xl p-6 md:p-12 text-white shadow-2xl overflow-x-hidden"
         >
-          <div className="text-center mb-6 md:mb-8">
+          <div className="text-center mb-6 md:mb-10">
             <h3 className="text-2xl md:text-3xl font-display font-bold mb-2 md:mb-3">
               {t('product.packaging.title')}
             </h3>
@@ -147,33 +164,33 @@ const Product = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 md:gap-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/20 text-center">
-              <div className="text-3xl md:text-5xl mb-2 md:mb-3">🫙</div>
-              <div className="text-xl md:text-2xl font-display font-bold mb-1 md:mb-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-5 md:p-6 border border-white/20 text-center flex flex-col items-center">
+              <Container className="mb-3 text-warmth-200" size={32} strokeWidth={1.5} />
+              <div className="text-xl md:text-2xl font-display font-bold mb-1">
                 {PRODUCT_INFO.packaging.piecesPerJar} {t('product.packaging.perPiece')}
               </div>
-              <div className="text-xs md:text-sm text-warmth-100 font-sans">
+              <div className="text-xs md:text-sm text-warmth-100 font-sans uppercase tracking-wider">
                 {t('product.packaging.perJar')}
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/20 text-center">
-              <div className="text-3xl md:text-5xl mb-2 md:mb-3">📦</div>
-              <div className="text-xl md:text-2xl font-display font-bold mb-1 md:mb-2">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-5 md:p-6 border border-white/20 text-center flex flex-col items-center">
+              <Boxes className="mb-3 text-warmth-200" size={32} strokeWidth={1.5} />
+              <div className="text-xl md:text-2xl font-display font-bold mb-1">
                 {PRODUCT_INFO.packaging.jarsPerCarton} {t('product.packaging.perJar')}
               </div>
-              <div className="text-xs md:text-sm text-warmth-100 font-sans">
+              <div className="text-xs md:text-sm text-warmth-100 font-sans uppercase tracking-wider">
                 {t('product.packaging.perCarton')}
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/20 text-center">
-              <div className="text-3xl md:text-5xl mb-2 md:mb-3">💰</div>
-              <div className="text-xl md:text-2xl font-display font-bold mb-1 md:mb-2">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-5 md:p-6 border border-white/20 text-center flex flex-col items-center">
+              <Tag className="mb-3 text-warmth-200" size={32} strokeWidth={1.5} />
+              <div className="text-xl md:text-2xl font-display font-bold mb-1">
                 Rp {PRODUCT_INFO.packaging.pricePerPiece.toLocaleString('id-ID')}
               </div>
-              <div className="text-xs md:text-sm text-warmth-100 font-sans">
+              <div className="text-xs md:text-sm text-warmth-100 font-sans uppercase tracking-wider">
                 {t('product.packaging.perPiece')}
               </div>
             </div>
