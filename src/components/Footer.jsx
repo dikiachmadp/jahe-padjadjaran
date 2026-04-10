@@ -5,12 +5,11 @@ const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-heritage-900 text-white pt-16 pb-8 overflow-hidden">
+    // pb-32 memberikan ruang aman jika navbar mobile belum sempat menghilang
+    <footer className="bg-heritage-900 text-white pt-16 pb-32 md:pb-8 overflow-hidden">
       <div className="section-container">
-        {/* Main Content Area */}
         <div className="flex flex-col md:flex-row md:justify-between items-start gap-10 mb-12">
 
-          {/* Brand & Mission */}
           <div className="space-y-6 max-w-lg">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-br from-warmth-500 to-warmth-600 rounded-xl flex items-center justify-center shadow-lg transform -rotate-3">
@@ -30,7 +29,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Location Focus - Minimalist */}
           <div className="md:text-right">
             <h4 className="font-display font-bold text-xs uppercase tracking-[0.2em] mb-4 text-warmth-500">
               {t('footer.location', 'Origin')}
@@ -40,29 +38,28 @@ const Footer = () => {
             </p>
             <div className="mt-6 flex md:justify-end">
               <span className="inline-flex items-center px-4 py-1.5 bg-heritage-800 border border-heritage-700 text-warmth-400 rounded-full text-[10px] font-sans uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></span>
                 Export Quality Standard
               </span>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar: Legal & Disclaimer */}
         <div className="pt-8 border-t border-heritage-800/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
               <p className="text-warmth-500 text-[11px] md:text-xs font-body mb-2">
                 &copy; {new Date().getFullYear()} {COMPANY_INFO.name}. {t('footer.bottom.rights')}
               </p>
-              <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1 text-[10px] text-heritage-500 font-sans tracking-wide">
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1 text-[10px] text-heritage-600 font-sans tracking-wide">
                 <span>NIB: {COMPANY_INFO.legal.nib}</span>
                 <span>NPWP: {COMPANY_INFO.legal.npwp}</span>
               </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-end space-y-1 opacity-40">
-              <span className="text-[9px] font-sans text-warmth-400 tracking-[0.3em] uppercase">Authentic Indonesian Product</span>
-              <div className="h-0.5 w-12 bg-warmth-600 rounded-full"></div>
+            <div className="flex flex-col items-center md:items-end space-y-1 opacity-30">
+              <span className="text-[9px] font-sans text-warmth-400 tracking-[0.3em] uppercase italic">Handcrafted in Indonesia</span>
+              <div className="h-0.5 w-12 bg-warmth-600 rounded-full opacity-50"></div>
             </div>
           </div>
         </div>
