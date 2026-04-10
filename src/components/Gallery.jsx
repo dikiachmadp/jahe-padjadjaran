@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { Check } from 'lucide-react';
 
 const galleryImages = [
-    '/img1.jpeg', '/img2.jpeg', '/img3.jpeg', '/img4.jpeg',
-    '/img5.jpeg', '/img6.jpeg', '/img7.jpeg', '/img8.jpeg'
+    '/img1.webp', '/img2.webp', '/img3.webp', '/img4.webp',
+    '/img5.webp', '/img6.webp', '/img7.webp', '/img8.webp'
 ];
 
 const Gallery = () => {
@@ -82,8 +82,8 @@ const Gallery = () => {
                                     whileTap={{ scale: 0.95 }}
                                     style={{ transform: 'translateZ(0)' }}
                                     className={`relative aspect-square rounded-xl md:rounded-2xl overflow-hidden transition-colors duration-300 border-2 ${currentImage === index
-                                            ? 'border-warmth-500 ring-2 ring-warmth-500 ring-offset-2'
-                                            : 'border-transparent hover:border-warmth-300'
+                                        ? 'border-warmth-500 ring-2 ring-warmth-500 ring-offset-2'
+                                        : 'border-transparent hover:border-warmth-300'
                                         }`}
                                 >
                                     <img

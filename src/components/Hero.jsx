@@ -150,7 +150,7 @@ const Hero = () => {
                 <div className="w-80 h-80 bg-white/10 backdrop-blur-md rounded-full border-4 border-white/20 flex items-center justify-center shadow-2xl gpu-accelerated">
                   <div className="text-center">
                     <img
-                      src="/hero.png"
+                      src="/hero.webp"
                       alt="Hero Image"
                       className="w-40 object-contain mx-auto"
                     />

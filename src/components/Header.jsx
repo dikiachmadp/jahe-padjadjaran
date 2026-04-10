@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { NAVIGATION } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
-import logo from '../assets/logos/logo.png';
+import logo from '../assets/logos/logo.webp';
 
 // Icons Mapping
 import {
@@ -33,8 +33,8 @@ const MobileBottomNav = ({ activeSection, onNavigate, isAtBottom }) => {
         }`}
     >
       <div className={`flex items-center justify-around relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${isFullWidth
-          ? 'bg-transparent shadow-none border-none rounded-none px-0 py-4 pb-[env(safe-area-inset-bottom,1rem)]'
-          : 'bg-white/85 backdrop-blur-xl border-t border-x border-b border-white/20 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-2 py-2'
+        ? 'bg-transparent shadow-none border-none rounded-none px-0 py-4 pb-[env(safe-area-inset-bottom,1rem)]'
+        : 'bg-white/85 backdrop-blur-xl border-t border-x border-b border-white/20 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-2 py-2'
         }`}>
         <LayoutGroup id="nav-indicator-mobile">
           {NAVIGATION.map((item) => {
@@ -172,8 +172,8 @@ const Header = () => {
                 <button
                   onClick={toggleLanguage}
                   className={`ml-4 px-4 py-2 rounded-full border-2 text-xs font-black transition-all duration-300 ${isScrolled
-                      ? 'border-heritage-100 text-heritage-900 bg-heritage-50'
-                      : 'border-white/20 text-white bg-white/10 hover:bg-white/20'
+                    ? 'border-heritage-100 text-heritage-900 bg-heritage-50'
+                    : 'border-white/20 text-white bg-white/10 hover:bg-white/20'
                     }`}
                 >
                   {isIndonesian ? 'ENGLISH' : 'BAHASA'}
@@ -184,8 +184,8 @@ const Header = () => {
                 <button
                   onClick={toggleLanguage}
                   className={`px-3 py-1.5 rounded-xl font-sans font-bold text-xs shadow-md transition-all duration-300 active:scale-90 ${isScrolled
-                      ? 'text-white bg-warmth-600 border border-warmth-700'
-                      : 'text-white bg-white/20 border border-white/30 backdrop-blur-sm'
+                    ? 'text-white bg-warmth-600 border border-warmth-700'
+                    : 'text-white bg-white/20 border border-white/30 backdrop-blur-sm'
                     }`}
                 >
                   {isIndonesian ? 'EN' : 'ID'}
