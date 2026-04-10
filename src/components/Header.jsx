@@ -58,7 +58,7 @@ const MobileBottomNav = ({ isVisible, activeSection, onNavigate }) => {
                   }`}
               >
                 <span className="mb-1">{NAV_ICONS[item.key]}</span>
-                <span className="text-[9px] font-sans font-black uppercase tracking-widest">
+                <span className="text-[9px] font-sans font-black uppercase tracking-widest text-center">
                   {t(`nav.${item.key}`)}
                 </span>
               </button>
@@ -86,15 +86,16 @@ const Header = () => {
 
       setIsScrolled(currentScrollY > 20);
 
-      // Sembunyikan jika sudah sampai di paling bawah (toleransi 30px)
-      const isAtBottom = currentScrollY + windowHeight >= documentHeight - 30;
+      // Logika: Muncul jika di paling atas ATAU di paling bawah ATAU scroll ke atas
+      const isAtTop = currentScrollY < 10;
+      const isAtBottom = currentScrollY + windowHeight >= documentHeight - 20;
+      const isScrollingUp = currentScrollY < lastScrollY.current;
 
-      if (isAtBottom) {
-        setIsBottomNavVisible(false);
+      if (isAtTop || isAtBottom || isScrollingUp) {
+        setIsBottomNavVisible(true);
       } else {
-        if (currentScrollY < lastScrollY.current || currentScrollY < 10) {
-          setIsBottomNavVisible(true);
-        } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Sembunyi jika scroll ke bawah dan sudah melewati threshold
+        if (currentScrollY > 100) {
           setIsBottomNavVisible(false);
         }
       }
@@ -107,7 +108,7 @@ const Header = () => {
         const element = document.querySelector(item.href);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= 120) {
+          if (rect.top <= 160) {
             setActiveSection(item.href);
             break;
           }
@@ -126,7 +127,6 @@ const Header = () => {
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      setActiveSection(href);
     }
   }, []);
 
@@ -155,6 +155,7 @@ const Header = () => {
                 </div>
               </button>
 
+              {/* Desktop Menu */}
               <div className="hidden md:flex items-center space-x-6">
                 {NAVIGATION.map((item) => (
                   <button
@@ -178,6 +179,7 @@ const Header = () => {
                 </button>
               </div>
 
+              {/* Mobile Language Toggle Only */}
               <div className="md:hidden flex items-center">
                 <button
                   onClick={toggleLanguage}
