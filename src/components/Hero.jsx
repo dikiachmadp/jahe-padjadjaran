@@ -167,18 +167,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator - GPU accelerated */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 relative">
-          <div className="w-1 h-3 bg-white/50 rounded-full animate-[scroll-indicator_1.5s_ease-in-out_infinite]"></div>
-        </div>
-      </motion.div>
     </section>
   );
 };

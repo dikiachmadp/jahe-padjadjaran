@@ -1,70 +1,86 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { NAVIGATION } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
 import logo from '../assets/logos/logo.png';
 
+// Icons Mapping
+import {
+  HiOutlineHome,
+  HiOutlineInformationCircle,
+  HiOutlineCube,
+  HiOutlineUserGroup,
+  HiOutlinePhotograph,
+  HiOutlineMail
+} from 'react-icons/hi';
+
 const NAV_ICONS = {
-  home: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-    </svg>
-  ),
-  about: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  ),
-  products: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-    </svg>
-  ),
-  partners: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-    </svg>
-  ),
-  contact: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-    </svg>
-  ),
-  gallery: (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-    </svg>
-  ),
+  home: <HiOutlineHome size={22} />,
+  about: <HiOutlineInformationCircle size={22} />,
+  products: <HiOutlineCube size={22} />,
+  partners: <HiOutlineUserGroup size={22} />,
+  gallery: <HiOutlinePhotograph size={22} />,
+  contact: <HiOutlineMail size={22} />,
 };
 
 const MobileBottomNav = ({ isVisible, activeSection, onNavigate }) => {
   const { t } = useLanguage();
+
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: 120, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+          exit={{ y: 120, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
-          className="md:hidden fixed bottom-6 left-4 right-4 z-[60] bg-white/95 backdrop-blur-xl border border-heritage-100 shadow-[0_10px_30px_rgba(0,0,0,0.15)] rounded-2xl px-2 pt-2"
+          className="md:hidden fixed bottom-0 left-0 right-0 z-[70] px-4 pb-[env(safe-area-inset-bottom,1.5rem)] pt-2"
         >
-          <div className="flex items-center justify-around h-16">
-            {NAVIGATION.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => onNavigate(item.href)}
-                className={`flex flex-col items-center justify-center flex-1 transition-all duration-300 ${activeSection === item.href ? 'text-warmth-600 scale-110' : 'text-heritage-400 opacity-60'
-                  }`}
-              >
-                <span className="mb-1">{NAV_ICONS[item.key]}</span>
-                <span className="text-[9px] font-sans font-black uppercase tracking-widest text-center">
-                  {t(`nav.${item.key}`)}
-                </span>
-              </button>
-            ))}
+          {/* Glassmorphism Wrapper */}
+          <div className="bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-2 py-2 flex items-center justify-around relative overflow-hidden">
+            <LayoutGroup id="nav-indicator">
+              {NAVIGATION.map((item) => {
+                const isActive = activeSection === item.href;
+
+                return (
+                  <button
+                    key={item.href}
+                    onClick={() => onNavigate(item.href)}
+                    className="relative flex flex-col items-center justify-center flex-1 py-2 outline-none tap-highlight-transparent"
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-pill"
+                        className="absolute inset-0 bg-warmth-600/10 rounded-2xl"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+
+                    <motion.span
+                      animate={{
+                        y: isActive ? -4 : 0,
+                        scale: isActive ? 1.1 : 1,
+                      }}
+                      className={`relative z-10 transition-colors duration-300 ${isActive ? 'text-warmth-800' : 'text-zinc-500'}`}
+                    >
+                      {NAV_ICONS[item.key]}
+                    </motion.span>
+
+                    <span className={`text-[9px] mt-1 font-sans font-black uppercase tracking-tighter transition-all duration-300 ${isActive ? 'text-warmth-800 opacity-100 scale-100' : 'text-zinc-400 opacity-0 scale-75 h-0'}`}>
+                      {t(`nav.${item.key}`)}
+                    </span>
+
+                    {isActive && (
+                      <motion.div
+                        layoutId="dot"
+                        className="w-1 h-1 bg-warmth-600 rounded-full mt-0.5"
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </LayoutGroup>
           </div>
-          <div className="h-1" />
         </motion.div>
       )}
     </AnimatePresence>
@@ -78,6 +94,23 @@ const Header = () => {
   const lastScrollY = useRef(0);
   const { toggleLanguage, t, isIndonesian } = useLanguage();
 
+  const triggerHaptic = useCallback(() => {
+    if ('vibrate' in navigator) {
+      navigator.vibrate(12);
+    }
+  }, []);
+
+  const scrollToSection = useCallback((href) => {
+    triggerHaptic();
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  }, [triggerHaptic]);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -86,23 +119,19 @@ const Header = () => {
 
       setIsScrolled(currentScrollY > 20);
 
-      // Logika: Muncul jika di paling atas ATAU di paling bawah ATAU scroll ke atas
-      const isAtTop = currentScrollY < 10;
-      const isAtBottom = currentScrollY + windowHeight >= documentHeight - 20;
+      const isAtBottom = currentScrollY + windowHeight >= documentHeight - 40;
+      const isAtTop = currentScrollY < 50;
       const isScrollingUp = currentScrollY < lastScrollY.current;
 
       if (isAtTop || isAtBottom || isScrollingUp) {
         setIsBottomNavVisible(true);
-      } else {
-        // Sembunyi jika scroll ke bawah dan sudah melewati threshold
-        if (currentScrollY > 100) {
-          setIsBottomNavVisible(false);
-        }
+      } else if (currentScrollY > 150) {
+        setIsBottomNavVisible(false);
       }
 
       lastScrollY.current = currentScrollY;
 
-      // Update Active Section
+      // Active Section Tracking
       const sections = [...NAVIGATION].reverse();
       for (const item of sections) {
         const element = document.querySelector(item.href);
@@ -118,16 +147,6 @@ const Header = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = useCallback((href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    }
   }, []);
 
   return (
@@ -146,46 +165,48 @@ const Header = () => {
           className={`transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg rounded-2xl md:rounded-none' : 'bg-transparent'
             }`}
         >
-          <nav className="section-container">
+          <nav className="max-w-7xl mx-auto px-6">
             <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'h-16 md:h-20' : 'h-20 md:h-24'
               }`}>
-              <button onClick={() => scrollToSection('#hero')} className="flex items-center">
+              <button onClick={() => scrollToSection('#hero')} className="z-10 flex items-center">
                 <div className={`transition-all duration-500 ${isScrolled ? 'w-32 md:w-52' : 'w-40 md:w-60'}`}>
-                  <img src={logo} alt="Logo" className="w-full h-auto" />
+                  <img src={logo} alt="Jahe Padjajaran" className="w-full h-auto" />
                 </div>
               </button>
 
               {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-6">
+              <div className="hidden md:flex items-center space-x-8">
                 {NAVIGATION.map((item) => (
                   <button
                     key={item.href}
                     onClick={() => scrollToSection(item.href)}
-                    className={`font-sans font-medium transition-all duration-300 hover:text-warmth-600 relative group ${isScrolled ? 'text-heritage-800' : 'text-white'
+                    className={`text-sm font-sans font-bold tracking-tight transition-all duration-300 hover:text-warmth-600 relative group ${isScrolled ? 'text-heritage-800' : 'text-white'
                       }`}
                   >
                     {t(`nav.${item.key}`)}
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-warmth-500 transition-all duration-300 group-hover:w-full ${activeSection === item.href ? 'w-full' : 'w-0'
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-warmth-600 transition-all duration-500 ${activeSection === item.href ? 'w-full' : 'w-0 group-hover:w-1/2'
                       }`} />
                   </button>
                 ))}
 
                 <button
                   onClick={toggleLanguage}
-                  className={`font-sans font-bold text-sm transition-all duration-300 border-2 px-3 py-1.5 rounded-lg ${isScrolled ? 'border-heritage-200 text-heritage-800' : 'border-white/30 text-white'
+                  className={`ml-4 px-4 py-2 rounded-full border-2 text-xs font-black transition-all duration-300 ${isScrolled
+                      ? 'border-heritage-100 text-heritage-900 bg-heritage-50'
+                      : 'border-white/20 text-white bg-white/10 hover:bg-white/20'
                     }`}
                 >
-                  {isIndonesian ? 'EN' : 'ID'}
+                  {isIndonesian ? 'ENGLISH' : 'BAHASA'}
                 </button>
               </div>
 
-              {/* Mobile Language Toggle Only */}
+              {/* Mobile Language Toggle */}
               <div className="md:hidden flex items-center">
                 <button
                   onClick={toggleLanguage}
-                  className={`px-3 py-1.5 rounded-xl font-sans font-bold text-xs transition-all duration-300 ${isScrolled
-                      ? 'text-heritage-900 bg-heritage-50 border border-heritage-100'
-                      : 'text-white bg-white/10 border border-white/20'
+                  className={`px-3 py-1.5 rounded-xl font-sans font-bold text-xs shadow-md transition-all duration-300 active:scale-90 ${isScrolled
+                      ? 'text-white bg-warmth-600 border border-warmth-700'
+                      : 'text-white bg-white/20 border border-white/30 backdrop-blur-sm'
                     }`}
                 >
                   {isIndonesian ? 'EN' : 'ID'}
