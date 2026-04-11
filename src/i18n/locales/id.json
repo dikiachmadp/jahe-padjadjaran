@@ -1,248 +1,248 @@
 {
   "nav": {
-    "home": "Home",
-    "about": "About",
-    "products": "Products",
-    "partners": "Partners",
-    "gallery": "Gallery",
-    "contact": "Contact",
-    "contactUs": "Contact Us"
+    "home": "Beranda",
+    "about": "Tentang",
+    "products": "Produk",
+    "partners": "Mitra",
+    "gallery": "Galeri",
+    "contact": "Kontak",
+    "contactUs": "Hubungi Kami"
   },
   "hero": {
-    "badge": "Premium Local Product",
-    "title": "Ginger Candy",
+    "badge": "Produk Lokal Berkualitas",
+    "title": "Permen Jahe",
     "subtitle": "Padjajaran",
-    "description": "The warmth of Indonesian spices in every piece. Natural ginger-based candy that boosts immunity and provides soothing comfort for your throat.",
-    "viewProducts": "View Products",
-    "becomePartner": "Become a Partner",
+    "description": "Kehangatan rempah nusantara dalam setiap butir. Permen berbasis jahe alami yang menjaga daya tahan tubuh dan memberikan kenyamanan pada tenggorokan.",
+    "viewProducts": "Lihat Produk",
+    "becomePartner": "Jadi Mitra",
     "stats": {
-      "natural": "Natural Ingredients",
-      "since": "Established",
-      "partners": "Distribution Partners"
+      "natural": "Bahan Alami",
+      "since": "Sejak",
+      "partners": "Mitra Distribusi"
     },
-    "productShowcase": "Quality Ginger",
-    "processedWithCare": "Processed with Care"
+    "productShowcase": "Jahe Berkualitas",
+    "processedWithCare": "Diproses dengan Care"
   },
   "about": {
-    "badge": "About Us",
+    "badge": "Tentang Kami",
     "title": "PT Padjajaran Pratama Wijaya",
-    "subtitle": "We are a company committed to providing high-quality spice products to support the health and well-being of the Indonesian community.",
+    "subtitle": "Kami adalah perusahaan yang berkomitmen menghadirkan produk rempah berkualitas tinggi untuk mendukung kesehatan dan kenyamanan masyarakat Indonesia.",
     "features": [
       {
         "icon": "🏢",
-        "title": "Registered Company",
-        "description": "Officially incorporated with full legality from the Ministry of Law and Human Rights"
+        "title": "Perusahaan Terdaftar",
+        "description": "Berbadan hukum resmi dengan legalitas lengkap dari Kementerian Hukum dan HAM"
       },
       {
         "icon": "🌿",
-        "title": "Quality Ingredients",
-        "description": "Using the finest selected spices processed with high hygiene standards"
+        "title": "Bahan Berkualitas",
+        "description": "Menggunakan rempah pilihan terbaik yang diproses secara higienis"
       },
       {
         "icon": "🎯",
-        "title": "Local Vision",
-        "description": "Supporting Indonesian products to compete in the national market"
+        "title": "Visi Lokal",
+        "description": "Mendukung produk nusantara untuk bersaing di pasar nasional"
       },
       {
         "icon": "🤝",
-        "title": "Solid Partnership",
-        "description": "Partnering with trusted distributors across Jabodetabek and West Java"
+        "title": "Kemitraan Solid",
+        "description": "Bermitra dengan distributor terpercaya di Jabodetabek dan Jawa Barat"
       }
     ],
     "legal": {
-      "title": "Company Legality",
-      "registrationNumber": "Registration Number",
-      "nib": "NIB (Business ID)",
-      "npwp": "NPWP (Tax ID)",
-      "kbliCode": "KBLI Code",
-      "businessActivity": "Business Activity"
+      "title": "Legalitas Perusahaan",
+      "registrationNumber": "Nomor Registrasi",
+      "nib": "NIB",
+      "npwp": "NPWP",
+      "kbliCode": "Kode KBLI",
+      "businessActivity": "Aktivitas Usaha"
     },
     "business": {
-      "title": "Business Information",
-      "scale": "Business Scale",
-      "investment": "Investment Status",
-      "risk": "Risk Level",
-      "registrationDate": "Registration Date",
-      "issuedBy": "Issued By"
+      "title": "Informasi Usaha",
+      "scale": "Skala Usaha",
+      "investment": "Status Penanaman Modal",
+      "risk": "Tingkat Risiko",
+      "registrationDate": "Tanggal Registrasi",
+      "issuedBy": "Diterbitkan oleh"
     }
   },
   "product": {
-    "badge": "Featured Product",
-    "title": "Padjajaran Ginger Candy",
-    "description": "Spice-based candy crafted from high-quality natural ingredients",
+    "badge": "Produk Unggulan",
+    "title": "Permen Jahe Padjajaran",
+    "description": "Permen berbasis rempah yang dibuat dari bahan alami berkualitas tinggi",
     "benefits": [
-      "Warms the body",
-      "Boosts immune system",
-      "Provides throat comfort",
-      "Healthy alternative for daily consumption"
+      "Menghangatkan tubuh",
+      "Menjaga daya tahan tubuh",
+      "Memberikan rasa nyaman pada tenggorokan",
+      "Alternatif sehat untuk konsumsi harian"
     ],
-    "benefitsTitle": "Health Benefits",
-    "featuresTitle": "Product Excellence",
+    "benefitsTitle": "Manfaat untuk Kesehatan",
+    "featuresTitle": "Keunggulan Produk",
     "features": [
-      "High-quality natural ingredients",
-      "Hygienically processed",
-      "Modern and practical packaging",
-      "Authentic Indonesian ginger flavor"
+      "Berbahan alami berkualitas tinggi",
+      "Diproses secara higienis",
+      "Kemasan modern dan praktis",
+      "Cita rasa jahe khas nusantara"
     ],
     "packaging": {
-      "title": "Packaging Specifications",
-      "subtitle": "Practically packed for easy distribution and sales",
-      "perJar": "Per Jar",
-      "perCarton": "Per Carton",
-      "perPiece": "Per Piece"
+      "title": "Spesifikasi Kemasan",
+      "subtitle": "Dikemas dengan praktis untuk memudahkan distribusi dan penjualan",
+      "perJar": "Per Toples",
+      "perCarton": "Per Karton",
+      "perPiece": "Per Butir"
     },
     "showcase": {
-      "title": "Practical Jar",
-      "subtitle": "pieces per jar"
+      "title": "Toples Praktis",
+      "subtitle": "butir per toples"
     }
   },
   "pricing": {
-    "badge": "Partnership Offer",
-    "title": "Partner Pricing Scheme",
-    "subtitle": "We offer a profitable partnership scheme with flexible payment systems according to management terms",
+    "badge": "Penawaran Kemitraan",
+    "title": "Skema Harga Mitra",
+    "subtitle": "Kami menawarkan skema kemitraan yang menguntungkan dengan sistem pembayaran yang fleksibel sesuai ketentuan manajemen",
     "partnerPrice": {
-      "title": "Partner Price",
-      "perCarton": "per carton",
+      "title": "Harga Mitra",
+      "perCarton": "per karton",
       "features": [
-        "Flexible payment system",
-        "Marketing support",
-        "Guaranteed product quality"
+        "Sistem pembayaran fleksibel",
+        "Dukungan promosi",
+        "Produk berkualitas terjamin"
       ]
     },
     "retailPrice": {
-      "title": "Retail Selling Price",
-      "perJar": "per jar to consumer",
-      "label": "RECOMMENDED",
+      "title": "Harga Jual Retail",
+      "perJar": "per toples ke konsumen",
+      "label": "REKOMENDASI",
       "features": [
-        "Competitive pricing",
-        "Clear profit margins",
-        "Easy to resell"
+        "Harga kompetitif",
+        "Margin keuntungan jelas",
+        "Mudah dijual kembali"
       ]
     },
     "profit": {
-      "title": "Partner Profit",
-      "perJar": "per jar",
-      "perCarton": "per carton",
-      "margin": "Profit Margin"
+      "title": "Keuntungan Mitra",
+      "perJar": "per toples",
+      "perCarton": "per karton",
+      "margin": "Margin Keuntungan"
     },
     "breakdown": {
-      "title": "Unit Price Breakdown",
+      "title": "Rincian Harga Per Unit",
       "basePrice": {
-        "label": "Base Price per Jar"
+        "label": "Harga Dasar per Toples"
       },
       "partnerPrice": {
-        "label": "Partner Purchase Price per Carton"
+        "label": "Harga Beli Mitra per Karton"
       },
       "retailPrice": {
-        "label": "Selling Price to Consumer"
+        "label": "Harga Jual ke Konsumen"
       },
       "totalProfit": {
-        "label": "Total Profit per Carton"
+        "label": "Total Keuntungan per Karton"
       },
-      "paymentNote": "The payment scheme follows the applicable terms from partner management"
+      "paymentNote": "Skema pembayaran mengikuti ketentuan yang berlaku dari manajemen mitra"
     },
-    "cta": "Apply for Partnership Now"
+    "cta": "Ajukan Kemitraan Sekarang"
   },
   "partners": {
-    "badge": "Distribution Partners",
-    "title": "Trusted by Selected Partners",
-    "subtitle": "We have established distribution partnerships with various companies and trusted stores across Jabodetabek and West Java",
+    "badge": "Mitra Distribusi",
+    "title": "Dipercaya oleh Mitra Terpilih",
+    "subtitle": "Kami telah menjalin kerja sama distribusi dengan berbagai perusahaan dan toko terpercaya di wilayah Jabodetabek dan Jawa Barat",
     "stats": {
-      "active": "Active Partners",
-      "since": "Since",
-      "satisfaction": "Partner Satisfaction",
-      "coverage": "Growth Rate"
+      "active": "Mitra Aktif",
+      "since": "Sejak",
+      "satisfaction": "Kepuasan Mitra",
+      "coverage": "Wilayah Coverage"
     },
-    "active": "Active",
-    "since": "Since {{year}}",
+    "active": "Aktif",
+    "since": "Sejak {{year}}",
     "benefits": {
-      "title": "Why Partner with Us?",
-      "subtitle": "We are committed to building a mutually beneficial and sustainable business ecosystem",
+      "title": "Mengapa Bermitra dengan Kami?",
+      "subtitle": "Kami berkomitmen membangun ekosistem bisnis yang saling menguntungkan dan berkelanjutan",
       "list": [
         {
           "icon": "🎯",
-          "title": "Quality Product",
-          "description": "Products with high quality standards and complete legality"
+          "title": "Produk Berkualitas",
+          "description": "Produk dengan standar kualitas tinggi dan legalitas lengkap"
         },
         {
           "icon": "💼",
-          "title": "Full Support",
-          "description": "Our team is ready to support partners' success in sales"
+          "title": "Dukungan Penuh",
+          "description": "Tim kami siap mendukung keberhasilan mitra dalam penjualan"
         },
         {
           "icon": "📈",
-          "title": "Competitive Margins",
-          "description": "Attractive profits with competitive market pricing"
+          "title": "Margin Kompetitif",
+          "description": "Keuntungan yang menarik dengan harga kompetitif di pasaran"
         },
         {
           "icon": "🚚",
-          "title": "Easy Distribution",
-          "description": "Efficient and timely distribution system"
+          "title": "Distribusi Mudah",
+          "description": "Sistem distribusi yang efisien dan tepat waktu"
         },
         {
           "icon": "🤝",
-          "title": "Long-term Partnership",
-          "description": "Building sustainable business relationships"
+          "title": "Kemitraan Jangka Panjang",
+          "description": "Membangun hubungan bisnis yang berkelanjutan"
         },
         {
           "icon": "📊",
-          "title": "High Market Potential",
-          "description": "Products with high demand in the natural health segment"
+          "title": "Potensi Pasar Besar",
+          "description": "Produk dengan permintaan tinggi di segmen kesehatan alami"
         }
       ]
     },
-    "cta": "Join as a Partner"
+    "cta": "Bergabung Sebagai Mitra"
   },
   "contact": {
-    "badge": "Contact Us",
-    "title": "Let's Partner Together",
-    "subtitle": "We are open to partnership and distribution opportunities. Contact us for more information about products and cooperation schemes",
-    "contactInfo": "Contact Information",
+    "badge": "Hubungi Kami",
+    "title": "Mari Bermitra Bersama",
+    "subtitle": "Kami terbuka untuk peluang kemitraan dan distribusi. Hubungi kami untuk informasi lebih lanjut tentang produk dan skema kerja sama",
+    "contactInfo": "Informasi Kontak",
     "methods": {
-      "phone": "Phone",
+      "phone": "Telepon",
       "email": "Email",
       "whatsapp": "WhatsApp",
       "instagram": "Instagram"
     },
-    "address": "Office Address",
+    "address": "Alamat Kantor",
     "cta": {
-      "title": "Interested in Partnering?",
-      "description": "Join our distribution network and grow your business with high-quality products in demand",
+      "title": "Tertarik Bermitra?",
+      "description": "Bergabunglah dengan jaringan distribusi kami dan kembangkan bisnis Anda dengan produk berkualitas tinggi yang diminati pasar",
       "benefits": [
-        "Easy partnership process",
-        "Full support from our team",
-        "Competitive profit margins",
-        "Products with full legality"
+        "Proses kemitraan yang mudah",
+        "Dukungan penuh dari tim kami",
+        "Margin keuntungan kompetitif",
+        "Produk dengan legalitas lengkap"
       ],
-      "whatsapp": "Contact via WhatsApp",
-      "email": "Or send us an email"
+      "whatsapp": "Hubungi via WhatsApp",
+      "email": "Atau kirim email kepada kami"
     },
     "socialProof": {
-      "text": "Trusted by leading distribution partners in Jabodetabek and West Java",
+      "text": "Dipercaya oleh mitra distribusi terkemuka di Jabodetabek dan Jawa Barat",
       "items": [
-        "Full Legality",
-        "Quality Products",
-        "Trusted Since 2021"
+        "Legalitas Lengkap",
+        "Produk Berkualitas",
+        "Terpercaya Sejak 2021"
       ]
     }
   },
   "footer": {
-    "description": "Natural ginger-based spice products that warm the body and boost immunity. Hygienically produced with full legality.",
-    "quickLinks": "Navigation",
-    "contactInfo": "Contact",
+    "description": "Produk rempah berbasis jahe alami yang menghangatkan tubuh dan menjaga daya tahan. Diproduksi secara higienis dengan legalitas lengkap.",
+    "quickLinks": "Navigasi",
+    "contactInfo": "Kontak",
     "bottom": {
       "rights": "All rights reserved.",
       "legal": "NIB: {{nib}} | NPWP: {{npwp}}"
     }
   },
   "language": {
-    "switch": "Bahasa Indonesia",
-    "current": "EN"
+    "switch": "English",
+    "current": "ID"
   },
   "gallery": {
-    "badge": "Product Gallery",
-    "title": "Product Gallery",
-    "subtitle": "Premium Quality",
-    "description": "Explore our high-quality ginger candy products in various packaging presentations."
+    "badge": "Galeri Produk",
+    "title": "Galeri Produk",
+    "subtitle": "Kualitas Premium",
+    "description": "Jelajahi produk permen jahe berkualitas tinggi kami dalam berbagai presentasi kemasan."
   }
 }
