@@ -28,7 +28,7 @@ const Partners = () => {
     {
       name: "PT Sumber Alfaria Trijaya",
       location: "Tangerang, Banten",
-      startYear: 2023,
+      startYear: 2025,
       type: "retail"
     }
   ];
