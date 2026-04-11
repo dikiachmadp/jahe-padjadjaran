@@ -46,7 +46,6 @@ const MobileBottomNav = ({ activeSection, onNavigate, isAtBottom }) => {
                 onClick={() => onNavigate(item.href)}
                 className="relative flex flex-col items-center justify-center flex-1 py-1 outline-none tap-highlight-transparent"
               >
-                {/* Active Indicator: Menjadi sedikit lebih tegas saat background transparan di footer */}
                 {isActive && (
                   <motion.div
                     layoutId="active-pill-mobile"
@@ -109,7 +108,6 @@ const Header = () => {
 
       setIsScrolled(currentScrollY > 20);
 
-      // Deteksi mentok bawah
       const atBottom = currentScrollY + windowHeight >= documentHeight - 10;
       setIsAtBottom(atBottom);
 
