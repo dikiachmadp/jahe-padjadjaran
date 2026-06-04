@@ -1,3 +1,4 @@
+import { useMemo } from 'react'; // Tambahkan ini untuk optimasi
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { PARTNERS } from '../data/constants';
@@ -13,9 +14,27 @@ import {
   Briefcase,
   TrendingUp,
   BarChart3,
-  ArrowRight,
-  Zap // Icon baru untuk Growth
+  ArrowRight
+  // Zap dihapus sementara karena belum dipakai agar tidak warning
 } from 'lucide-react';
+
+// 1. Pindahkan mapping ikon ke luar komponen agar tidak dibuat ulang tiap render
+const PARTNER_ICONS = {
+  corporate: <Building2 className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+  logistics: <Truck className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+  retail: <Store className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+  distributor: <Handshake className="w-6 h-6 md:w-8 md:h-8 text-white" />,
+  // sesuaikan key di bawah ini dengan property 'type' yang ada di data PARTNERS kamu
+};
+
+const BENEFIT_ICONS = [
+  <Target key="1" className="w-8 h-8 text-warmth-400" />,
+  <Briefcase key="2" className="w-8 h-8 text-warmth-400" />,
+  <TrendingUp key="3" className="w-8 h-8 text-warmth-400" />,
+  <Truck key="4" className="w-8 h-8 text-warmth-400" />,
+  <Handshake key="5" className="w-8 h-8 text-warmth-400" />,
+  <BarChart3 key="6" className="w-8 h-8 text-warmth-400" />
+];
 
 const Partners = () => {
   const [ref, isVisible] = useScrollAnimation(0.2);
@@ -23,32 +42,16 @@ const Partners = () => {
 
   const benefitsList = t('partners.benefits.list', { returnObjects: true }) || [];
 
-  const extendedPartners = [
+  // 2. Gunakan useMemo agar array tidak digabungkan ulang setiap kali komponen render
+  const extendedPartners = useMemo(() => [
     ...PARTNERS,
     {
       name: "PT Sumber Alfaria Trijaya",
       location: "Tangerang, Banten",
       startYear: 2025,
-      type: "retail"
+      type: "retail" // Dipetakan dengan aman ke PARTNER_ICONS.retail
     }
-  ];
-
-  const partnerTypeIcons = [
-    <Building2 className="w-6 h-6 md:w-8 md:h-8 text-white" />,
-    <Truck className="w-6 h-6 md:w-8 md:h-8 text-white" />,
-    <Store className="w-6 h-6 md:w-8 md:h-8 text-white" />,
-    <Store className="w-6 h-6 md:w-8 md:h-8 text-white" />,
-    <Handshake className="w-6 h-6 md:w-8 md:h-8 text-white" />
-  ];
-
-  const benefitIcons = [
-    <Target className="w-8 h-8 text-warmth-400" />,
-    <Briefcase className="w-8 h-8 text-warmth-400" />,
-    <TrendingUp className="w-8 h-8 text-warmth-400" />,
-    <Truck className="w-8 h-8 text-warmth-400" />,
-    <Handshake className="w-8 h-8 text-warmth-400" />,
-    <BarChart3 className="w-8 h-8 text-warmth-400" />
-  ];
+  ], []);
 
   return (
     <section id="partners" className="py-16 md:py-24 bg-white overflow-x-hidden">
@@ -72,13 +75,13 @@ const Partners = () => {
           </p>
         </motion.div>
 
-        {/* Stats Banner - DIOPTIMASI */}
+        {/* Stats Banner */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 md:mb-24">
           {[
             { label: t('partners.stats.active'), val: '10k+', color: 'text-warmth-600', bg: 'bg-warmth-50' },
             { label: t('partners.stats.since'), val: '2021', color: 'text-heritage-600', bg: 'bg-heritage-50' },
             { label: t('partners.stats.satisfaction'), val: '100%', color: 'text-emerald-600', bg: 'bg-emerald-50' },
-            { label: 'Growth Rate', val: '145%', color: 'text-amber-600', bg: 'bg-amber-50' }, // Pengganti Cakupan Wilayah
+            { label: 'Growth Rate', val: '145%', color: 'text-amber-600', bg: 'bg-amber-50' },
           ].map((stat, i) => (
             <motion.div
               key={i}
@@ -105,7 +108,8 @@ const Partners = () => {
             >
               <div className="flex items-center space-x-5">
                 <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-heritage-900 rounded-2xl flex items-center justify-center">
-                  {partnerTypeIcons[index] || <Handshake className="text-white" />}
+                  {/* 3. Ambil ikon berdasarkan tipe partner, gunakan fallback Handshake jika tipe tidak terdaftar */}
+                  {PARTNER_ICONS[partner.type] || <Handshake className="text-white" />}
                 </div>
                 <div>
                   <h3 className="text-lg md:text-xl font-display font-bold text-heritage-900 leading-tight">{partner.name}</h3>
@@ -119,7 +123,7 @@ const Partners = () => {
           ))}
         </div>
 
-        {/* Partnership Benefits - ULTRA SMOOTH OPTIMIZATION */}
+        {/* Partnership Benefits */}
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -127,7 +131,6 @@ const Partners = () => {
             transition={{ duration: 0.7 }}
             className="bg-heritage-900 rounded-[2.5rem] p-8 md:p-20 text-white shadow-2xl relative overflow-hidden"
           >
-            {/* Dekorasi statis (tanpa blur berlebihan agar ringan) */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-warmth-500/10 rounded-full -mr-32 -mt-32"></div>
 
             <div className="relative z-10 text-center mb-12 md:mb-20">
@@ -143,12 +146,13 @@ const Partners = () => {
               {benefitsList.map((benefit, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ y: -8 }} // Hanya y-axis, kurangi scale agar tidak berat
+                  whileHover={{ y: -8 }}
                   transition={{ type: "tween", ease: "easeOut", duration: 0.2 }}
                   className="group bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-warmth-400/40 hover:bg-white/[0.07] transition-colors will-change-transform"
                 >
+                  {/* 4. Berikan fallback Target icon jika item melebihi jumlah ikon tersedia */}
                   <div className="mb-6 inline-block text-warmth-400 transition-transform duration-300 group-hover:scale-110">
-                    {benefitIcons[index]}
+                    {BENEFIT_ICONS[index] || <Target className="w-8 h-8 text-warmth-400" />}
                   </div>
                   <h4 className="text-xl font-display font-bold mb-3 text-white">
                     {benefit.title}
