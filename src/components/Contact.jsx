@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { COMPANY_INFO } from '../data/constants';
+import { COMPANY_INFO, waLink, telLink, mailLink } from '../data/constants';
+import { trackWhatsApp, trackEmail } from '../analytics/ga';
 import { useLanguage } from '../context/LanguageContext';
 import {
   Phone,
@@ -31,21 +32,21 @@ const Contact = () => {
       icon: <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />,
       key: 'whatsapp',
       value: COMPANY_INFO.whatsapp,
-      link: `https://wa.me/${COMPANY_INFO.whatsapp.replace(/\D/g, '')}`,
+      link: waLink(),
       color: 'from-green-500 to-green-600'
     },
     {
       icon: <Phone className="w-5 h-5 md:w-6 md:h-6" />,
       key: 'phone',
       value: COMPANY_INFO.phone,
-      link: `tel:${COMPANY_INFO.phone}`,
+      link: telLink,
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: <Mail className="w-5 h-5 md:w-6 md:h-6" />,
       key: 'email',
       value: COMPANY_INFO.email,
-      link: `mailto:${COMPANY_INFO.email}`,
+      link: mailLink,
       color: 'from-red-500 to-red-600'
     }
   ];
@@ -53,7 +54,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-16 md:py-24 bg-gradient-to-b from-warmth-50 to-heritage-50 overflow-hidden">
       <div className="section-container">
-        <motion.div
+        <m.div
           ref={ref}
           {...fadeInUp}
           className="text-center mb-12 md:mb-16"
@@ -67,24 +68,28 @@ const Contact = () => {
           <p className="text-lg md:text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed px-4">
             {t('contact.subtitle')}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Info Kontak */}
           <div className="space-y-6">
-            <motion.h3
+            <m.h3
               {...fadeInUp}
               transition={{ delay: 0.1 }}
               className="text-xl md:text-2xl font-display font-bold text-heritage-900"
             >
               {t('contact.contactInfo')}
-            </motion.h3>
+            </m.h3>
 
             <div className="grid gap-4">
               {contactMethods.map((method, index) => (
-                <motion.a
+                <m.a
                   key={method.key}
                   href={method.link}
+                  onClick={() => {
+                    if (method.key === 'whatsapp') trackWhatsApp('contact_card');
+                    if (method.key === 'email') trackEmail('contact_card');
+                  }}
                   initial={{ opacity: 0, x: -15 }}
                   animate={isVisible ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
@@ -104,12 +109,12 @@ const Contact = () => {
                     </div>
                   </div>
                   <ChevronRight className="w-5 h-5 text-heritage-300 group-hover:text-warmth-600 transition-colors" />
-                </motion.a>
+                </m.a>
               ))}
             </div>
 
             {/* Alamat */}
-            <motion.div
+            <m.div
               {...fadeInUp}
               transition={{ delay: 0.5 }}
               className="card-elevated p-5 md:p-6 border-l-4 border-warmth-500 bg-white"
@@ -125,11 +130,11 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Kartu CTA Kemitraan */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={isVisible ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -162,33 +167,33 @@ const Contact = () => {
                 ))}
               </div>
 
-              <motion.a
+              <m.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                href={`https://wa.me/6281221886566?text=${encodeURIComponent(
-                  "Halo, saya tertarik untuk bermitra dengan Permen Jahe Padjajaran"
-                )}`}
+                href={waLink('Halo, saya tertarik untuk bermitra dengan Permen Jahe Padjajaran')}
+                onClick={() => trackWhatsApp('contact_cta')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center py-4 text-lg font-bold text-heritage-900 bg-warmth-400 rounded-xl hover:bg-warmth-300 transition-colors shadow-lg shadow-warmth-900/20"
               >
                 {t('contact.cta.whatsapp')}
-              </motion.a>
+              </m.a>
 
               <div className="mt-6 text-center">
                 <a
-                  href={`mailto:${COMPANY_INFO.email}`}
+                  href={mailLink}
+                  onClick={() => trackEmail('contact_cta')}
                   className="text-warmth-200 hover:text-warmth-100 font-body text-sm underline transition-colors"
                 >
                   {t('contact.cta.email')}
                 </a>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Banner Bukti Sosial */}
-        <motion.div
+        <m.div
           {...fadeInUp}
           transition={{ delay: 0.6 }}
           className="mt-12 md:mt-20 bg-white rounded-2xl p-6 md:p-10 shadow-xl text-center"
@@ -206,7 +211,7 @@ const Contact = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
