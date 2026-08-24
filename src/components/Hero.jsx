@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
@@ -42,13 +42,13 @@ const Hero = () => {
       <div className="section-container mt-4 relative z-10 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -57,9 +57,9 @@ const Hero = () => {
               <span className="px-4 py-2 bg-warmth-400/20 backdrop-blur-sm text-warmth-100 rounded-full text-sm font-sans font-medium border border-warmth-400/30">
                 {t('hero.badge')}
               </span>
-            </motion.div>
+            </m.div>
 
-            <motion.h1
+            <m.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -67,18 +67,18 @@ const Hero = () => {
             >
               {t('hero.title')}
               <span className="block text-warmth-300">{t('hero.subtitle')}</span>
-            </motion.h1>
+            </m.h1>
 
-            <motion.p
+            <m.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl md:text-2xl text-warmth-100 mb-8 font-body leading-relaxed"
             >
               {t('hero.description')}
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -96,10 +96,10 @@ const Hero = () => {
               >
                 {t('hero.becomePartner')}
               </a>
-            </motion.div>
+            </m.div>
 
             {/* Stats */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -129,11 +129,11 @@ const Hero = () => {
                   {t('hero.stats.partners')}
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* Visual Element */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -150,8 +150,14 @@ const Hero = () => {
                 <div className="w-80 h-80 bg-white/10 backdrop-blur-md rounded-full border-4 border-white/20 flex items-center justify-center shadow-2xl gpu-accelerated">
                   <div className="text-center">
                     <img
-                      src="/hero.webp"
-                      alt="Hero Image"
+                      src="/img/hero-320.webp"
+                      srcSet="/img/hero-160.webp 160w, /img/hero-320.webp 320w, /img/hero-480.webp 480w"
+                      sizes="160px"
+                      alt={t('hero.imageAlt')}
+                      width={160}
+                      height={160}
+                      fetchpriority="high"
+                      decoding="async"
                       className="w-40 object-contain mx-auto"
                     />
                     <div className="text-2xl font-display font-bold text-white">
@@ -164,7 +170,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

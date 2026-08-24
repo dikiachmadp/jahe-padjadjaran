@@ -21,7 +21,8 @@
       "partners": "Distribution Partners"
     },
     "productShowcase": "Quality Ginger",
-    "processedWithCare": "Processed with Care"
+    "processedWithCare": "Processed with Care",
+    "imageAlt": "Jahe Padjajaran ginger candy packaging"
   },
   "about": {
     "badge": "About Us",
@@ -53,7 +54,6 @@
       "title": "Company Legality",
       "registrationNumber": "Registration Number",
       "nib": "NIB (Business ID)",
-      "npwp": "NPWP (Tax ID)",
       "kbliCode": "KBLI Code",
       "businessActivity": "Business Activity"
     },
@@ -231,8 +231,7 @@
     "quickLinks": "Navigation",
     "contactInfo": "Contact",
     "bottom": {
-      "rights": "All rights reserved.",
-      "legal": "NIB: {{nib}} | NPWP: {{npwp}}"
+      "rights": "All rights reserved."
     }
   },
   "language": {
@@ -243,6 +242,68 @@
     "badge": "Product Gallery",
     "title": "Product Gallery",
     "subtitle": "Premium Quality",
-    "description": "Explore our high-quality ginger candy products in various packaging presentations."
+    "description": "Explore our high-quality ginger candy products in various packaging presentations.",
+    "alt": {
+      "img1": "Jahe Padjajaran ginger candy pouch held up against hot air balloons over Cappadocia, Turkey",
+      "img2": "Jahe Padjajaran ginger candy pouch beside the pool of a Moroccan-style resort in Marrakech",
+      "img3": "Jahe Padjajaran ginger candy pouch with a dawn sky full of hot air balloons in Cappadocia",
+      "img4": "Jahe Padjajaran ginger candy pouch on a garden breakfast table lined with palm trees",
+      "img5": "Jahe Padjajaran ginger candy pouch in front of an AFC Champions League Two press backdrop",
+      "img6": "Jahe Padjajaran ginger candy pouch held up in the stands of a football stadium",
+      "img7": "Jahe Padjajaran ginger candy pouch at a dinner table overlooking the blue city of Chefchaouen, Morocco",
+      "img8": "Jahe Padjajaran ginger candy pouch held up in front of the Grand Mosque in Makkah"
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Frequently Asked Questions",
+    "subtitle": "The questions customers and prospective distribution partners ask us most."
+  },
+  "productPage": {
+    "eyebrow": "Product Details",
+    "title": "Jahe Padjajaran Ginger Candy",
+    "tagline": "Ginger candy made from natural spices, produced hygienically in Depok, West Java.",
+    "intro": "Jahe Padjajaran is a ginger-based hard candy produced by PT Padjajaran Pratama Wijaya. It carries the warm, sharp character of Indonesian ginger, with a slow-dissolving texture that keeps the warmth in the throat. The product is made for everyday use — while travelling, in cold weather, or whenever the throat feels uncomfortable.",
+    "specsTitle": "Specifications",
+    "specs": {
+      "brand": "Brand",
+      "producer": "Producer",
+      "origin": "Country of Origin",
+      "category": "Category",
+      "perJar": "Pieces per jar",
+      "perCarton": "Jars per carton",
+      "retail": "Recommended retail price",
+      "barcode": "Barcode (EAN-13)"
+    },
+    "unitPieces": "pieces",
+    "unitJars": "jars",
+    "benefitsTitle": "Benefits",
+    "featuresTitle": "Product Highlights",
+    "barcodeTitle": "Barcode & Product Authenticity",
+    "barcodeIntro": "Every pack of Jahe Padjajaran carries the official barcode below. Use this number to confirm that the product you bought comes from PT Padjajaran Pratama Wijaya.",
+    "barcodeCta": "View the official barcode page",
+    "legalTitle": "Legal Registration",
+    "ctaTitle": "Interested in selling this product?",
+    "ctaText": "We are open to distribution partnerships with stores, wholesalers and distributors. Pricing and margin details are on the partnership page.",
+    "ctaPartnership": "View partnership scheme",
+    "ctaWhatsapp": "Contact via WhatsApp"
+  },
+  "digitalLink": {
+    "eyebrow": "Product Verification",
+    "title": "Official Barcode for Jahe Padjajaran Ginger Candy",
+    "lead": "This page is the official destination of the barcode printed on Jahe Padjajaran packaging. If you arrived here by scanning the code on a pack, the product you are holding is registered to PT Padjajaran Pratama Wijaya.",
+    "numbersTitle": "Barcode Numbers",
+    "printed": "As printed on the pack",
+    "ean13": "EAN-13",
+    "upcA": "UPC-A",
+    "gtin14": "GTIN-14",
+    "digitalLink": "GS1 Digital Link",
+    "ownerTitle": "Registered To",
+    "productTitle": "Product",
+    "seeProduct": "See full product details",
+    "seeHome": "Go to homepage",
+    "contactTitle": "Questions about this product?",
+    "contactText": "Get in touch to confirm authenticity, ask about the product, or discuss distribution.",
+    "whatsapp": "Contact via WhatsApp"
   }
 }

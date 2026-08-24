@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { PRODUCT_INFO } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
@@ -14,7 +14,7 @@ const Pricing = () => {
   return (
     <section id="pricing" className="py-16 md:py-20 bg-gradient-to-b from-warmth-50 to-white overflow-x-hidden">
       <div className="section-container">
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -30,11 +30,11 @@ const Pricing = () => {
           <p className="text-lg md:text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed px-4">
             {t('pricing.subtitle')}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid lg:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-12">
           {/* Partner Purchase Price */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -64,10 +64,10 @@ const Pricing = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Retail Price */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -100,10 +100,10 @@ const Pricing = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Profit */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -137,11 +137,11 @@ const Pricing = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Breakdown Card */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -210,10 +210,10 @@ const Pricing = () => {
               {t('pricing.breakdown.paymentNote')}
             </p>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* CTA */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -222,7 +222,7 @@ const Pricing = () => {
           <a href="#contact" className="btn-primary text-lg px-12 py-4">
             {t('pricing.cta')}
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

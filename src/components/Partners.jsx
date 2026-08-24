@@ -1,5 +1,5 @@
 import { useMemo } from 'react'; // Tambahkan ini untuk optimasi
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { PARTNERS } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
@@ -57,7 +57,7 @@ const Partners = () => {
     <section id="partners" className="py-16 md:py-24 bg-white overflow-x-hidden">
       <div className="section-container">
         {/* Header */}
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -73,7 +73,7 @@ const Partners = () => {
           <p className="text-lg md:text-xl text-heritage-700 max-w-2xl mx-auto font-body leading-relaxed">
             {t('partners.subtitle')}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Stats Banner */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 md:mb-24">
@@ -83,7 +83,7 @@ const Partners = () => {
             { label: t('partners.stats.satisfaction'), val: '100%', color: 'text-emerald-600', bg: 'bg-emerald-50' },
             { label: 'Growth Rate', val: '145%', color: 'text-amber-600', bg: 'bg-amber-50' },
           ].map((stat, i) => (
-            <motion.div
+            <m.div
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isVisible ? { opacity: 1, scale: 1 } : {}}
@@ -92,14 +92,14 @@ const Partners = () => {
             >
               <div className={`text-3xl md:text-5xl font-display font-bold ${stat.color} mb-2`}>{stat.val}</div>
               <div className="text-heritage-700 font-body text-xs md:text-base font-semibold opacity-80">{stat.label}</div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         {/* Partners Grid */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-32">
           {extendedPartners.map((partner, index) => (
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
@@ -119,13 +119,13 @@ const Partners = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         {/* Partnership Benefits */}
         <div className="relative">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
@@ -144,7 +144,7 @@ const Partners = () => {
 
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {benefitsList.map((benefit, index) => (
-                <motion.div
+                <m.div
                   key={index}
                   whileHover={{ y: -8 }}
                   transition={{ type: "tween", ease: "easeOut", duration: 0.2 }}
@@ -160,21 +160,21 @@ const Partners = () => {
                   <p className="text-warmth-100/60 font-body text-sm leading-relaxed">
                     {benefit.description}
                   </p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
             <div className="relative z-10 text-center mt-16 md:mt-24">
-              <motion.a
+              <m.a
                 href="#contact"
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-heritage-900 bg-warmth-300 rounded-full hover:bg-warmth-400 transition-all shadow-lg"
               >
                 {t('partners.cta')}
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </motion.a>
+              </m.a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

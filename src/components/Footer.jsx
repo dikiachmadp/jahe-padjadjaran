@@ -53,7 +53,6 @@ const Footer = () => {
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1 text-[10px] text-heritage-600 font-sans tracking-wide">
                 <span>NIB: {COMPANY_INFO.legal.nib}</span>
-                <span>NPWP: {COMPANY_INFO.legal.npwp}</span>
               </div>
             </div>
 

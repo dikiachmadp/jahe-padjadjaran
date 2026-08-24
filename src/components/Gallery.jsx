@@ -1,18 +1,14 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useLanguage } from '../context/LanguageContext';
 import { useState } from 'react';
 import { Check } from 'lucide-react';
-
-const galleryImages = [
-    '/img1.webp', '/img2.webp', '/img3.webp', '/img4.webp',
-    '/img5.webp', '/img6.webp', '/img7.webp', '/img8.webp'
-];
+import { GALLERY_IMAGES } from '../data/gallery';
 
 const Gallery = () => {
     const [ref, isVisible] = useScrollAnimation(0.15);
     const { t } = useLanguage();
-    const [currentImage, setCurrentImage] = useState(6);
+    const [currentImage, setCurrentImage] = useState(0);
 
     // Variasi animasi untuk gambar utama
     const mainImageVariants = {
@@ -24,7 +20,7 @@ const Gallery = () => {
     return (
         <section id="gallery" className="py-16 md:py-24 bg-gradient-to-b from-warmth-50 to-white overflow-hidden">
             <div className="section-container">
-                <motion.div
+                <m.div
                     ref={ref}
                     initial={{ opacity: 0, y: 20 }}
                     animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -40,11 +36,11 @@ const Gallery = () => {
                     <p className="text-lg md:text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed px-4">
                         {t('gallery.description', 'Explore our premium ginger candy products in various presentations and packaging options.')}
                     </p>
-                </motion.div>
+                </m.div>
 
                 <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                     {/* Main Image Container */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={isVisible ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -52,10 +48,16 @@ const Gallery = () => {
                     >
                         <div className="relative aspect-[4/3] md:aspect-[3/2] bg-heritage-100 rounded-3xl shadow-2xl overflow-hidden group border-8 border-white">
                             <AnimatePresence mode="wait">
-                                <motion.img
+                                <m.img
                                     key={currentImage}
-                                    src={galleryImages[currentImage]}
-                                    alt="Gallery Preview"
+                                    src={GALLERY_IMAGES[currentImage].src}
+                                    srcSet={GALLERY_IMAGES[currentImage].srcSet}
+                                    sizes={GALLERY_IMAGES[currentImage].sizes}
+                                    alt={t(GALLERY_IMAGES[currentImage].altKey)}
+                                    width={GALLERY_IMAGES[currentImage].width}
+                                    height={GALLERY_IMAGES[currentImage].height}
+                                    loading="lazy"
+                                    decoding="async"
                                     variants={mainImageVariants}
                                     initial="initial"
                                     animate="animate"
@@ -66,15 +68,18 @@ const Gallery = () => {
                                 />
                             </AnimatePresence>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* Thumbnails Grid */}
                     <div className="order-1 lg:order-2">
                         <div className="grid grid-cols-4 gap-3 md:gap-4">
-                            {galleryImages.map((image, index) => (
-                                <motion.button
-                                    key={index}
+                            {GALLERY_IMAGES.map((image, index) => (
+                                <m.button
+                                    key={image.id}
                                     onClick={() => setCurrentImage(index)}
+                                    type="button"
+                                    aria-label={t(image.altKey)}
+                                    aria-current={currentImage === index}
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={isVisible ? { opacity: 1, scale: 1 } : {}}
                                     transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
@@ -87,13 +92,17 @@ const Gallery = () => {
                                         }`}
                                 >
                                     <img
-                                        src={image}
-                                        alt={`Thumbnail ${index + 1}`}
+                                        src={image.thumb}
+                                        alt={t(image.altKey)}
+                                        width={240}
+                                        height={240}
+                                        loading="lazy"
+                                        decoding="async"
                                         className={`w-full h-full object-cover transition-all duration-500 ${currentImage === index ? 'scale-110 brightness-75' : 'hover:scale-110'
                                             }`}
                                     />
                                     {currentImage === index && (
-                                        <motion.div
+                                        <m.div
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             className="absolute inset-0 flex items-center justify-center bg-warmth-600/20"
@@ -101,9 +110,9 @@ const Gallery = () => {
                                             <div className="bg-warmth-500 p-1 rounded-full shadow-lg">
                                                 <Check className="w-4 h-4 text-white" />
                                             </div>
-                                        </motion.div>
+                                        </m.div>
                                     )}
-                                </motion.button>
+                                </m.button>
                             ))}
                         </div>
                     </div>

@@ -1,0 +1,117 @@
+# =============================================================================
+# jahepadjajaran.com — konfigurasi LiteSpeed / Apache (Hostinger)
+# =============================================================================
+# Berkas ini disalin otomatis ke dist/ oleh scripts/prerender.mjs.
+# Unggah bersama isi dist/ lainnya ke public_html.
+#
+# PENTING: buat cadangan .htaccess yang sudah ada di server sebelum menimpanya.
+
+Options -MultiViews
+DirectoryIndex index.html
+
+# -----------------------------------------------------------------------------
+# 1. Kanonikalisasi host — satu URL untuk satu halaman
+# -----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Paksa HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # Paksa non-www (ubah bila justru ingin memakai www)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # 2. Redirect varian penulisan barcode ke bentuk kanonik GTIN-14
+  # ---------------------------------------------------------------------------
+  # Orang bisa mengetik nomor dalam bentuk EAN-13 (13 digit), UPC-A (12 digit),
+  # atau lewat jalur yang lebih mudah diingat. Semuanya diarahkan ke satu URL
+  # agar tidak ada halaman duplikat di mata mesin pencari.
+  RewriteRule ^01/0661706054362/?$   /01/00661706054362/ [R=301,L]
+  RewriteRule ^01/661706054362/?$    /01/00661706054362/ [R=301,L]
+  RewriteRule ^barcode/0?0?661706054362/?$ /01/00661706054362/ [R=301,L]
+  RewriteRule ^gtin/0?0?661706054362/?$    /01/00661706054362/ [R=301,L]
+
+  # ---------------------------------------------------------------------------
+  # 3. Routing halaman statis hasil prerender
+  # ---------------------------------------------------------------------------
+  # Berkas dan direktori nyata dilayani apa adanya. Sebelumnya /robots.txt dan
+  # /sitemap.xml memang tidak ada sebagai berkas, sehingga permintaannya jatuh
+  # ke fallback SPA dan dijawab index.html berstatus 200 — Googlebot membaca
+  # itu sebagai robots.txt tidak valid. Keduanya kini berkas nyata.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Setiap rute punya berkas index.html sendiri hasil prerender.
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*?)/?$ /$1/index.html [L]
+
+  # TIDAK ADA fallback catch-all ke /index.html di sini, dan itu disengaja.
+  #
+  # Selama situs ini masih SPA murni, semua URL tak dikenal harus diarahkan ke
+  # index.html supaya router sisi klien bisa menanganinya. Sekarang setiap rute
+  # sudah punya berkas HTML sendiri hasil prerender, jadi fallback itu justru
+  # merugikan: URL sampah apa pun akan dijawab 200 berisi beranda, dan mesin
+  # pencari mengindeksnya sebagai halaman duplikat.
+  #
+  # Tanpa fallback, permintaan yang tidak cocok jatuh ke ErrorDocument di bawah
+  # dan mengembalikan status 404 yang sebenarnya.
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+# -----------------------------------------------------------------------------
+# 4. Cache
+# -----------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Aset ber-hash (nama berubah setiap build) aman di-cache selamanya.
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Gambar dan ikon: nama berkasnya stabil, jadi jangan immutable.
+  <FilesMatch "\.(webp|png|jpe?g|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # HTML harus selalu divalidasi ulang. Sebelumnya HTML ikut aturan 7 hari,
+  # sehingga perubahan situs baru terlihat pengunjung setelah sepekan.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(xml|txt|webmanifest)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+
+  # ---------------------------------------------------------------------------
+  # 5. Header keamanan
+  # ---------------------------------------------------------------------------
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# 6. Tipe MIME
+# -----------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# 7. Kompresi
+# -----------------------------------------------------------------------------
+# Brotli sudah aktif di server Hostinger (terverifikasi lewat header
+# content-encoding: br). Blok gzip di bawah hanya cadangan untuk klien lama.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
