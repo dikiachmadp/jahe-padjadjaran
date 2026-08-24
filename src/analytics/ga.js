@@ -30,7 +30,10 @@ export function initAnalytics() {
   };
   window.gtag('js', new Date());
   // Pengiriman page_view diurus manual agar navigasi SPA ikut tercatat.
-  window.gtag('config', MEASUREMENT_ID, { send_page_view: false, anonymize_ip: true });
+  // Catatan: parameter anonymize_ip tidak dipakai — di GA4 anonimisasi IP
+  // selalu aktif dan parameternya diabaikan (itu peninggalan Universal
+  // Analytics), jadi mencantumkannya hanya menyiratkan kontrol yang tidak ada.
+  window.gtag('config', MEASUREMENT_ID, { send_page_view: false });
 }
 
 export function trackPageView(path, title) {
