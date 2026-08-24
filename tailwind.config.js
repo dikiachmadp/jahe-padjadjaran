@@ -45,9 +45,9 @@ export default {
         }
       },
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Lora', 'serif'],
-        sans: ['Montserrat', 'sans-serif'],
+        display: ['"Playfair Display Variable"', 'Playfair Display', 'Georgia', 'serif'],
+        body: ['"Lora Variable"', 'Lora', 'Georgia', 'serif'],
+        sans: ['"Montserrat Variable"', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',
