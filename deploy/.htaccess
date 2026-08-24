@@ -37,11 +37,10 @@ DirectoryIndex index.html
   # ---------------------------------------------------------------------------
   # 3. Routing halaman statis hasil prerender
   # ---------------------------------------------------------------------------
-  # Berkas dan direktori nyata dilayani apa adanya. Ini yang membuat
-  # /robots.txt dan /sitemap.xml benar-benar terkirim sebagai berkas — pada
-  # konfigurasi sebelumnya keduanya tertelan aturan catch-all dan dijawab
-  # dengan index.html berstatus 200, sehingga Googlebot menganggap robots.txt
-  # tidak valid dan sitemap gagal dibaca.
+  # Berkas dan direktori nyata dilayani apa adanya. Sebelumnya /robots.txt dan
+  # /sitemap.xml memang tidak ada sebagai berkas, sehingga permintaannya jatuh
+  # ke fallback SPA dan dijawab index.html berstatus 200 — Googlebot membaca
+  # itu sebagai robots.txt tidak valid. Keduanya kini berkas nyata.
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
@@ -50,8 +49,16 @@ DirectoryIndex index.html
   RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
   RewriteRule ^(.*?)/?$ /$1/index.html [L]
 
-  # Sisanya ditangani router sisi klien lewat halaman utama.
-  RewriteRule ^ /index.html [L]
+  # TIDAK ADA fallback catch-all ke /index.html di sini, dan itu disengaja.
+  #
+  # Selama situs ini masih SPA murni, semua URL tak dikenal harus diarahkan ke
+  # index.html supaya router sisi klien bisa menanganinya. Sekarang setiap rute
+  # sudah punya berkas HTML sendiri hasil prerender, jadi fallback itu justru
+  # merugikan: URL sampah apa pun akan dijawab 200 berisi beranda, dan mesin
+  # pencari mengindeksnya sebagai halaman duplikat.
+  #
+  # Tanpa fallback, permintaan yang tidak cocok jatuh ke ErrorDocument di bawah
+  # dan mengembalikan status 404 yang sebenarnya.
 </IfModule>
 
 ErrorDocument 404 /404.html
