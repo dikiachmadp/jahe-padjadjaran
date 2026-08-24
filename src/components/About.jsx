@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { COMPANY_INFO } from '../data/constants';
 import { useLanguage } from '../context/LanguageContext';
@@ -32,7 +32,7 @@ const About = () => {
   return (
     <section id="about" className="py-16 md:py-20 bg-gradient-to-b from-warmth-50 to-white overflow-x-hidden">
       <div className="section-container">
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -48,7 +48,7 @@ const About = () => {
           <p className="text-lg md:text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed px-4">
             {t('about.subtitle')}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-12 md:mb-16">
@@ -57,7 +57,7 @@ const About = () => {
             const IconComponent = iconMap[feature.icon] || feature.icon;
 
             return (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -78,13 +78,13 @@ const About = () => {
                 <p className="text-sm md:text-base text-heritage-600 font-body leading-relaxed">
                   {feature.description}
                 </p>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>
 
         {/* Company Details */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -100,7 +100,6 @@ const About = () => {
                 {[
                   { label: t('about.legal.registrationNumber'), value: COMPANY_INFO.legal.registrationNumber },
                   { label: t('about.legal.nib'), value: COMPANY_INFO.legal.nib },
-                  { label: t('about.legal.npwp'), value: COMPANY_INFO.legal.npwp, breakAll: true },
                   {
                     label: t('about.legal.kbliCode'),
                     value: `${COMPANY_INFO.legal.kbliCode} - ${t('about.legal.businessActivity')}`
@@ -149,7 +148,7 @@ const About = () => {
               {t('about.business.issuedBy')} {COMPANY_INFO.legal.issuedBy}
             </p>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

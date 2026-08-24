@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useLanguage } from '../context/LanguageContext';
 import {
@@ -70,7 +70,7 @@ const Product = () => {
     <section id="product" className="py-16 md:py-20 bg-white overflow-x-hidden">
       <div className="section-container">
         {/* Header Section */}
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -86,11 +86,11 @@ const Product = () => {
           <p className="text-lg md:text-xl text-heritage-700 max-w-3xl mx-auto font-body leading-relaxed px-4">
             {t('product.description')}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-20">
           {/* Visual Element: Swipable Packaging Showcase */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -102,7 +102,7 @@ const Product = () => {
 
               <div className="relative z-10 text-center">
                 <AnimatePresence mode="wait">
-                  <motion.div
+                  <m.div
                     key={activeSlide}
                     initial={{ opacity: 0, y: 20, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -130,7 +130,7 @@ const Product = () => {
                         <span>{currentSlide.info}</span>
                       </div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
 
                 {/* Dots Indicator */}
@@ -149,10 +149,10 @@ const Product = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Benefits Section */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -162,7 +162,7 @@ const Product = () => {
             </h3>
             <div className="space-y-4">
               {Array.isArray(benefits) && benefits.map((benefit, index) => (
-                <motion.div
+                <m.div
                   key={index}
                   className="flex items-start space-x-4 p-4 bg-warmth-50 rounded-xl hover:bg-warmth-100 transition-all duration-300 border border-transparent hover:border-warmth-200 group"
                 >
@@ -174,14 +174,14 @@ const Product = () => {
                       {typeof benefit === 'string' ? benefit : benefit?.title || ''}
                     </p>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Features Grid */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -191,7 +191,7 @@ const Product = () => {
           </h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {Array.isArray(features) && features.map((feature, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 className="card-elevated p-5 md:p-6 text-center group bg-white border border-warmth-50"
               >
@@ -202,13 +202,13 @@ const Product = () => {
                 <p className="text-sm md:text-base text-heritage-800 font-body font-medium">
                   {typeof feature === 'string' ? feature : feature?.title || ''}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Packaging Info Summary Card */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -246,7 +246,7 @@ const Product = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

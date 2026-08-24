@@ -21,7 +21,8 @@
       "partners": "Mitra Distribusi"
     },
     "productShowcase": "Jahe Berkualitas",
-    "processedWithCare": "Diproses dengan Care"
+    "processedWithCare": "Diproses dengan Care",
+    "imageAlt": "Kemasan Permen Jahe Padjajaran"
   },
   "about": {
     "badge": "Tentang Kami",
@@ -53,7 +54,6 @@
       "title": "Legalitas Perusahaan",
       "registrationNumber": "Nomor Registrasi",
       "nib": "NIB",
-      "npwp": "NPWP",
       "kbliCode": "Kode KBLI",
       "businessActivity": "Aktivitas Usaha"
     },
@@ -231,8 +231,7 @@
     "quickLinks": "Navigasi",
     "contactInfo": "Kontak",
     "bottom": {
-      "rights": "All rights reserved.",
-      "legal": "NIB: {{nib}} | NPWP: {{npwp}}"
+      "rights": "All rights reserved."
     }
   },
   "language": {
@@ -243,6 +242,68 @@
     "badge": "Galeri Produk",
     "title": "Galeri Produk",
     "subtitle": "Kualitas Premium",
-    "description": "Jelajahi produk permen jahe berkualitas tinggi kami dalam berbagai presentasi kemasan."
+    "description": "Jelajahi produk permen jahe berkualitas tinggi kami dalam berbagai presentasi kemasan.",
+    "alt": {
+      "img1": "Kemasan pouch Permen Jahe Padjajaran dipegang di depan balon udara Cappadocia, Turki",
+      "img2": "Kemasan Permen Jahe Padjajaran di tepi kolam sebuah resor bergaya Maroko di Marrakech",
+      "img3": "Kemasan Permen Jahe Padjajaran dengan latar belasan balon udara saat fajar di Cappadocia",
+      "img4": "Kemasan Permen Jahe Padjajaran di atas meja sarapan taman dengan latar deretan pohon palem",
+      "img5": "Kemasan Permen Jahe Padjajaran di depan backdrop konferensi pers AFC Champions League Two",
+      "img6": "Kemasan Permen Jahe Padjajaran dipegang di tribun sebuah stadion sepak bola",
+      "img7": "Kemasan Permen Jahe Padjajaran di meja makan malam dengan latar kota biru Chefchaouen, Maroko",
+      "img8": "Kemasan Permen Jahe Padjajaran dengan latar Masjidil Haram di Makkah"
+    }
+  },
+  "faq": {
+    "badge": "Tanya Jawab",
+    "title": "Pertanyaan yang Sering Diajukan",
+    "subtitle": "Hal-hal yang paling sering ditanyakan konsumen dan calon mitra distribusi."
+  },
+  "productPage": {
+    "eyebrow": "Detail Produk",
+    "title": "Permen Jahe Padjajaran",
+    "tagline": "Permen jahe berbahan rempah alami, diproduksi higienis di Depok, Jawa Barat.",
+    "intro": "Permen Jahe Padjajaran adalah permen keras berbasis jahe yang diproduksi PT Padjajaran Pratama Wijaya. Rasanya hangat dan pedas khas jahe Nusantara, dengan tekstur yang perlahan larut sehingga rasa hangatnya bertahan di tenggorokan. Produk ini dikembangkan untuk konsumsi harian — di perjalanan, saat cuaca dingin, atau ketika tenggorokan terasa kurang nyaman.",
+    "specsTitle": "Spesifikasi",
+    "specs": {
+      "brand": "Merek",
+      "producer": "Produsen",
+      "origin": "Negara Asal",
+      "category": "Kategori",
+      "perJar": "Isi per toples",
+      "perCarton": "Isi per karton",
+      "retail": "Harga jual disarankan",
+      "barcode": "Barcode (EAN-13)"
+    },
+    "unitPieces": "butir",
+    "unitJars": "toples",
+    "benefitsTitle": "Manfaat",
+    "featuresTitle": "Keunggulan Produk",
+    "barcodeTitle": "Barcode & Keaslian Produk",
+    "barcodeIntro": "Setiap kemasan Permen Jahe Padjajaran mencantumkan barcode resmi berikut. Gunakan nomor ini untuk memastikan produk yang Anda beli berasal dari PT Padjajaran Pratama Wijaya.",
+    "barcodeCta": "Lihat halaman barcode resmi",
+    "legalTitle": "Legalitas",
+    "ctaTitle": "Tertarik menjual produk ini?",
+    "ctaText": "Kami membuka kemitraan distribusi untuk toko, grosir, dan distributor. Skema harga dan margin tersedia di halaman kemitraan.",
+    "ctaPartnership": "Lihat skema kemitraan",
+    "ctaWhatsapp": "Hubungi via WhatsApp"
+  },
+  "digitalLink": {
+    "eyebrow": "Verifikasi Produk",
+    "title": "Barcode Resmi Permen Jahe Padjajaran",
+    "lead": "Halaman ini adalah tujuan resmi dari barcode yang tercetak pada kemasan Permen Jahe Padjajaran. Jika Anda sampai di sini setelah memindai kode pada kemasan, produk yang Anda pegang terdaftar atas PT Padjajaran Pratama Wijaya.",
+    "numbersTitle": "Nomor Barcode",
+    "printed": "Seperti tercetak di kemasan",
+    "ean13": "EAN-13",
+    "upcA": "UPC-A",
+    "gtin14": "GTIN-14",
+    "digitalLink": "GS1 Digital Link",
+    "ownerTitle": "Terdaftar Atas Nama",
+    "productTitle": "Produk",
+    "seeProduct": "Lihat detail produk lengkap",
+    "seeHome": "Kunjungi beranda",
+    "contactTitle": "Ada pertanyaan tentang produk ini?",
+    "contactText": "Hubungi kami langsung untuk konfirmasi keaslian, informasi produk, atau peluang distribusi.",
+    "whatsapp": "Hubungi via WhatsApp"
   }
 }
